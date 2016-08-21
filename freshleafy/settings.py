@@ -69,6 +69,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'freshleafy.wsgi.application'
 
+DEBUG = True
+TEMPLATE_DEBUG = True
+
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
