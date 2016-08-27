@@ -1,4 +1,4 @@
-articlesapp.controller("PaginationController", ["$scope", "$location", "$anchorScroll", function ($scope, $location, $anchorScroll) {
+productapp.controller("PaginationController", ["$scope", "$location", "$anchorScroll", function ($scope, $location, $anchorScroll) {
     $scope.pageChangeHandler = function (num) {
         console.log('page changed to ' + num);
         $(window).scroll(function () {

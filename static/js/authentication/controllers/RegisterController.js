@@ -1,4 +1,4 @@
-articlesapp.controller("RegisterController", ["$location", "$scope", "Authentication",
+productapp.controller("RegisterController", ["$location", "$scope", "Authentication",
     function ($location, $scope, Authentication) {
         $scope.account = {
             username: "",

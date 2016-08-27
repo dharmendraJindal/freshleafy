@@ -293,7 +293,7 @@ function isArrayLike(obj) {
  * Invokes the `iterator` function once for each item in `obj` collection, which can be either an
  * object or an array. The `iterator` function is invoked with `iterator(value, key, obj)`, where `value`
  * is the value of an object property or an array element, `key` is the object property key or
- * array element index and obj is the `obj` itself. Specifying a `context` for the function is optional.
+ * array element base and obj is the `obj` itself. Specifying a `context` for the function is optional.
  *
  * It is worth noting that `.forEach` does not iterate over inherited properties because it filters
  * using the `hasOwnProperty` method.
@@ -14771,7 +14771,7 @@ function qFactory(nextTick, exceptionHandler) {
    *
    * @param {Array.<Promise>|Object.<Promise>} promises An array or hash of promises.
    * @returns {Promise} Returns a single promise that will be resolved with an array/hash of values,
-   *   each value corresponding to the promise at the same index/key in the `promises` array/hash.
+   *   each value corresponding to the promise at the same base/key in the `promises` array/hash.
    *   If any of the promises is resolved with a rejection, this resulting promise will be rejected
    *   with the same rejection value.
    */
@@ -18644,16 +18644,16 @@ function timeZoneGetter(date, formats, offset) {
 }
 
 function getFirstThursdayOfYear(year) {
-    // 0 = index of January
+    // 0 = base of January
     var dayOfWeekOnFirst = (new Date(year, 0, 1)).getDay();
-    // 4 = index of Thursday (+1 to account for 1st = 5)
-    // 11 = index of *next* Thursday (+1 account for 1st = 12)
+    // 4 = base of Thursday (+1 to account for 1st = 5)
+    // 11 = base of *next* Thursday (+1 account for 1st = 12)
     return new Date(year, 0, ((dayOfWeekOnFirst <= 4) ? 5 : 12) - dayOfWeekOnFirst);
 }
 
 function getThursdayThisWeek(datetime) {
     return new Date(datetime.getFullYear(), datetime.getMonth(),
-      // 4 = index of Thursday
+      // 4 = base of Thursday
       datetime.getDate() + (4 - datetime.getDay()));
 }
 
@@ -27066,7 +27066,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
 
         if (trackByExpGetter) {
           trackByIdExpFn = function(key, value, index) {
-            // assign key, value, and $index to the locals so that they can be used in hash functions
+            // assign key, value, and $base to the locals so that they can be used in hash functions
             if (keyIdentifier) hashFnLocals[keyIdentifier] = key;
             hashFnLocals[valueIdentifier] = value;
             hashFnLocals.$index = index;
@@ -27078,7 +27078,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
         // iterator, and the value is objects with following properties.
         //   - scope: bound scope
         //   - element: previous element.
-        //   - index: position
+        //   - base: position
         //
         // We are using no-proto object so that we don't need to guard against inherited props via
         // hasOwnProperty.

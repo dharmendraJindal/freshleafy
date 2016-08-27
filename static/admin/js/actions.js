@@ -109,7 +109,7 @@
 		$('form#changelist-form table#result_list tr').find('td:gt(0) :input').change(function() {
 			list_editable_changed = true;
 		});
-		$('form#changelist-form button[name="index"]').click(function(event) {
+		$('form#changelist-form button[name="base"]').click(function(event) {
 			if (list_editable_changed) {
 				return confirm(gettext("You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost."));
 			}

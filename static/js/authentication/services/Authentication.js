@@ -1,4 +1,4 @@
-articlesapp.factory("Authentication", ["$cookies", "$http", function ($cookies, $http) {
+productapp.factory("Authentication", ["$cookies", "$http", function ($cookies, $http) {
     var Authentication = {
         getAuthenticatedAccount: getAuthenticatedAccount,
         isAuthenticated: isAuthenticated,

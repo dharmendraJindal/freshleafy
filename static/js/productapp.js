@@ -1,0 +1,1 @@
+var productapp = angular.module("ProductApp", ["ngRoute", "ngResource", "ngCookies", "angularUtils.directives.dirPagination"]);

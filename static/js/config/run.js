@@ -1,4 +1,4 @@
-articlesapp.run(["$http", "Authentication", "$location", "$rootScope",
+productapp.run(["$http", "Authentication", "$location", "$rootScope",
     function ($http, Authentication, $location, $rootScope) {
         $http.defaults.xsrfCookieName = "csrftoken";
         $http.defaults.xsrfHeaderName = "X-CSRFToken";

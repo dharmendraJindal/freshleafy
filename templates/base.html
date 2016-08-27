@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="productApp">
+<html lang="en" ng-app="ProductApp">
 <head>
-    <base href="/"/>
+    <base href="/" />
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/static/favicon.ico">
     <title>Hello World</title>
-    {% include "includes/styles.html" %}
+     {% include "includes/styles.html" %}
 </head>
 <body id="top">
-{% include "includes/navbar.html" %}
-<div class="container" style="margin-top: 100px">
-    <div class="row" ng-view></div>
-</div>
-{% include ".includes/scripts/base_scripts.html" %}
-{% include "include/scripts/product.html" %}
-{% include ".picture_form" %}
+    {% include "includes/navbar.html" %}
+    <div class="container" style="margin-top: 100px">
+        <div class="row" ng-view></div>
+    </div>
+
+
+    {% include "includes/scripts/base_scripts.html" %}
+    {% include "includes/scripts/articles_app.html" %}
 </body>
 </html>

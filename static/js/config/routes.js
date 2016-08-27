@@ -1,10 +1,10 @@
-productsapp.config(["$routeProvider", "$resourceProvider", "$locationProvider",
+productapp.config(["$routeProvider", "$resourceProvider", "$locationProvider",
     function ($routeProvider, $resourceProvider, $locationProvider) {
         $resourceProvider.defaults.stripTrailingSlashes = false;
         $routeProvider
             .when("/", {
-                templateUrl: "/static/partials/articles/ListOfAllArticles.html",
-                controller: "ListOfAllArticleController"
+                templateUrl: "/static/js/product/partials/ListOfAllArticles.html",
+                controller: "ListOfAllProductCategoryController"
             })
             .when("/login", {
                 controller: "LoginController",
