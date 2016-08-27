@@ -3,7 +3,7 @@ productapp.config(["$routeProvider", "$resourceProvider", "$locationProvider",
         $resourceProvider.defaults.stripTrailingSlashes = false;
         $routeProvider
             .when("/", {
-                templateUrl: "/static/js/product/partials/ListOfAllArticles.html",
+                templateUrl: "/static/js/product/partials/ListOfAllProductCategories.html",
                 controller: "ListOfAllProductCategoryController"
             })
             .when("/login", {
