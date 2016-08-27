@@ -51,11 +51,12 @@ productapp.factory("Authentication", ["$cookies", "$http", function ($cookies, $
         }
     }
 
-    function register(email, password, username) {
+    function register(email, password, phonenumber) {
+        console.log(email, password, phonenumber, 'front end data');
         return $http.post("/api/v1/auth/register/", {
-            username: username,
             password: password,
-            email: email
+            email: email,
+            phone_number: phonenumber
         }).then(registerSuccessFn, registerErrorFn);
 
         function registerSuccessFn(data) {

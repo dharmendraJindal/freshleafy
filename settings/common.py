@@ -50,7 +50,8 @@ INSTALLED_APPS = (
     'compressor',
     'rest_framework',
     'django_extensions',
-    'product'
+    'product',
+    'authentication'
 )
 
 MIDDLEWARE_CLASSES = (

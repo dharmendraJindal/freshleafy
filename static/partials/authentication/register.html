@@ -1,11 +1,6 @@
 <h2>Register.</h2>
 <form name="RegisterForm" ng-submit="register()" novalidate>
 
-    <div class="form-group" ng-class="{ 'has-error' : username.$invalid && !username.$pristine }">
-      <label>Username*</label>
-      <input type="text" placeholder="enter your username" ng-model="account.username" class="form-control" required>
-      <p ng-show="username.$invalid && !username.$pristine" class="help-block">username is required.</p>
-    </div>
     <div class="form-group" ng-class="{ 'has-error' : email.$invalid && !username.$pristine }">
       <label>Email*</label>
       <input type="email" placeholder="enter your email" ng-model="account.email" class="form-control" required>
@@ -17,6 +12,11 @@
       <input type="password" placeholder="enter your password" ng-model="account.password" class="form-control"
              required>
       <p ng-show="password.$invalid && !password.$pristine" class="help-block">password is required.</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : phone_number.$invalid && !phone_number.$pristine }">
+      <label>Phone Number*</label>
+      <input type="text" placeholder="enter your phone number" ng-model="account.phone_number" class="form-control" required>
+      <p ng-show="phone_number.$invalid && !phone_number.$pristine" class="help-block">phone number is required.</p>
     </div>
     <button class='btn btn-primary' ng-disabled="$invalid" type="submit"> Register </button>
 </form>

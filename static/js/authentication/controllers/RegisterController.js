@@ -1,13 +1,13 @@
 productapp.controller("RegisterController", ["$location", "$scope", "Authentication",
     function ($location, $scope, Authentication) {
         $scope.account = {
-            username: "",
             email: "",
-            password: ""
+            password: "",
+            phone_number : ""
         };
         $scope.register = register;
 
         function register() {
-            Authentication.register($scope.account.username, $scope.account.email, $scope.account.password);
+            Authentication.register($scope.account.email, $scope.account.password, $scope.account.phone_number);
         }
     }]);

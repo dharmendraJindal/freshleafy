@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from rest_framework import permissions, status, views, viewsets
 from rest_framework.response import Response
 
-from authentication.permissions import IsAccountOwner
+from authentication.models import UserProfile
 from authentication.serializers import UserSerializer
 
 
@@ -12,20 +12,12 @@ class AccountViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-    # def get_permissions(self):
-    #     if self.request.method in permissions.SAFE_METHODS:
-    #         return (permissions.AllowAny(),)
-    #
-    #     if self.request.method == 'POST':
-    #         return (permissions.AllowAny(),)
-    #
-    #     return (permissions.IsAuthenticated(), IsAccountOwner(),)
-
     def create(self, request):
         data = request.data
         # serializer = self.serializer_class(data=request.data)
+
+        print data, 'data'
         try:
-            username = data.get('username', None)
             email = data.get('email', None)
             password = data.get('password', None)
         except:
@@ -34,7 +26,36 @@ class AccountViewSet(viewsets.ModelViewSet):
             password = None
 
         if data:
-            User.objects.create_user(email=email, username=username, password=password)
+            user = User.objects.create_user(email=email, username=email, password=password)
+
+            # create user profile
+
+            address_one = data.get('address_one', None)
+            address_two = data.get('address_two', None)
+            street = data.get('street', None)
+            landmark = data.get('landmark', None)
+            district = data.get('district', None)
+            city = data.get('city', None)
+            state = data.get('state', None)
+            pincode = data.get('pincode', None)
+            phonenumber = data.get('phonenumber', None)
+            phonenumber_two = data.get('phonenumber_two', None)
+            company = data.get('company', None)
+
+            user_profile = UserProfile(user=user,
+                                       address_one=address_one,
+                                       address_two=address_two,
+                                       street=street,
+                                       landmark=landmark,
+                                       district=district,
+                                       city=city,
+                                       state=state,
+                                       pincode=pincode,
+                                       phonenumber=phonenumber,
+                                       phonenumber_two=phonenumber_two,
+                                       company=company
+                                       )
+            user_profile.save()
 
             return Response(data, status=status.HTTP_201_CREATED)
         return Response({
