@@ -1,6 +1,5 @@
 import os
 
-
 # =============================================================================
 # Which WEB_ENV?
 # =============================================================================
@@ -37,7 +36,6 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ALLOWED_HOSTS = ["*"]
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -49,11 +47,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # 'compressor',
     'rest_framework',
+    'rest_framework.authtoken',
     'django_extensions',
     'flapps.product',
 )
 
-#read about these middleware
+# read about these middleware
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -63,7 +62,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
 
 DATABASES = {
     'default': {
@@ -105,6 +103,5 @@ MEDIA_URL = STATIC_URL + "media/"
 
 UPLOAD_ROOT = MEDIA_ROOT + "media/uploads/"
 DOWNLOAD_ROOT = os.path.join(PROJECT_ROOT, "static/media/downloads/")
-
 
 COMPRESS_ENABLED = True

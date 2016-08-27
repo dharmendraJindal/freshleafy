@@ -36,6 +36,7 @@ class AccountViewSet(viewsets.ModelViewSet):
 class LoginView(views.APIView):
     def post(self, request, format=None):
         data = request.data
+        print data
 
         username = data.get('username', None)
         password = data.get('password', None)
