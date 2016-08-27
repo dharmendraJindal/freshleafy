@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^product/', include('flapps.product.urls', namespace='product')),
+    url(r'^app/', include('flapps.product.urls', namespace='app')),
 ]

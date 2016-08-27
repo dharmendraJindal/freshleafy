@@ -1,0 +1,16 @@
+<a href="/" class="btn btn-default"> Back </a>
+<h2> {{article.title}}</h2>
+
+<form name="editArticle" class="form-horizontal">
+    <form-field record="article" field="title" type="input" required="true"></form-field>
+    <form-field record="article" field="content" type="textarea" required="true"></form-field>
+    <form-field record="article" field="category" type="choices" data="categories" required="true" multiple="true"></form-field>
+
+    <!--<div ng-include="'static/partials/in_app_file_upload/in_app_file_upload.html'"></div>-->
+
+    <div class="row form-group">
+        <div class="col-sm-offset-2">
+            <button class="btn btn-danger" ng-click="delete()"> Delete article </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+<div class="row">
+    {{user}}
+    <p><input type="search" class="form-control"
+              placeholder="Search using a keyword or some random shit you want to see"
+              ng-model="query"/>
+    </p>
+
+    <div class="col-md-12" dir-paginate="article in articles | filter:query | itemsPerPage: pageSize"
+         current-page="currentPage">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h4>{{article.title}}</h4></div>
+            <div class="panel-body">
+                {{article.content}}
+                <ul ng-repeat="cat in article.category">
+                    <li>{{cat.title}}</li>
+                </ul>
+                <div ng-click="show(article.id)" class="btn btn-default"> Read More</div>
+              <span ng-show="isAuthenticated">
+                    <div ng-click="edit(article.id)" class="btn btn-default"> Edit</div>
+              </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-controller="PaginationController" class="other-controller">
+    <div class="text-center">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"
+                                 template-url="static/partials/pagination/dirPagination.tpl.html"></dir-pagination-controls>
+    </div>
+</div>

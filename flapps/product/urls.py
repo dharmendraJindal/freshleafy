@@ -7,3 +7,5 @@ router = routers.DefaultRouter()
 router.register(r'categories', ProductCategoryViewSet)
 
 urlpatterns = router.urls
+
+

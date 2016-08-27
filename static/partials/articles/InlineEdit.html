@@ -1,0 +1,27 @@
+<table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+        <th>Title:</th>
+        <th>Content</th>
+        <th>Update</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="article in articles">
+        <td>
+            <div ng-hide="editingData[article.id]">{{article.title | uppercase}}</div>
+            <div ng-show="editingData[article.id]"><input type="text" class="form-control" ng-model="article.title"/></div>
+        </td>
+        <td>
+            <div ng-hide="editingData[article.id]">{{article.content}}</div>
+            <div ng-show="editingData[article.id]"><textarea  class="form-control"
+                                                              ng-model="article.content"></textarea></div>
+        </td>
+        <td ng-if="isAuthenticated">
+            <button class="btn btn-primary" ng-hide="editingData[article.id]" ng-click="modify(article)">Modify</button>
+            <button class="btn btn-success" ng-show="editingData[article.id]" ng-click="update(article)">Update</button>
+            <button class="btn btn-danger" ng-show="editingData[article.id]" ng-click="remove(article)">Remove</button>
+        </td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,6 @@
+{% load staticfiles compress%}
+{% compress css %}
+<link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap-theme.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+{% endcompress %}

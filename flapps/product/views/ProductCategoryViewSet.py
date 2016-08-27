@@ -9,5 +9,4 @@ from flapps.product.serialisers.ProductCategorySerialiser import ProductCategory
 class ProductCategoryViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = ProductCategory.objects.all()
-    print queryset
     serializer_class = ProductCategorySerializer

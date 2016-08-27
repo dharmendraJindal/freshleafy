@@ -1,0 +1,33 @@
+<div class="row form-group" ng-form="{{field}}" ng-class="{ 'has-error': {{field}}.$dirty && {{field}}.$invalid }">
+    <label class="col-lg-12 col-md-12 control-label"> {{ field }}
+        <span ng-if="required  == 'true' ">*</span></label>
+    <div class="col-lg-12 col-md-12" ng-if="type == 'input'">
+
+        <input ng-model="record[field]" type="text" class="form-control" ng-if="required == 'true' " required
+               ng-change="update()" ng-blur="blurUpdate()" />
+        <input ng-model="record[field]" type="text" class="form-control" ng-if="required == 'false' "
+               ng-change="update()" ng-blur="blurUpdate()" />
+    </div>
+    <div class="col-lg-12 col-md-12" ng-if="type == 'textarea'">
+
+            <textarea ng-model="record[field]" class="form-control" ng-if="required == 'true' " required
+                   ng-change="update()" ng-blur="blurUpdate()" > </textarea>
+            <textarea ng-model="record[field]" class="form-control" ng-if="required == 'false' "
+                   ng-change="update()" ng-blur="blurUpdate()"> </textarea>
+   </div>
+    <div class="col-lg-12 col-md-12" ng-if="type == 'choices'">
+
+            <select class="form-control" ng-if="multiple" ng-options="item.id as item.title for item in data" ng-model="record[field]"
+                    class="form-control" multiple
+                   ng-change="update()" ng-blur="blurUpdate()"> </select>
+
+            <select class="form-control" ng-options='item.id as item.title for item in data' ng-model="record[field]"
+                    class="form-control"
+                    ng-if="required == 'false' "
+                   ng-change="update()" multiple ng-blur="blurUpdate()"> </select>
+   </div>
+
+    <div class="col-sm-12 has-error" ng-show="{{field}}.$dirty && {{field}}.$invalid" ng-messages="field.$error">
+        <p class="control-label" ng-message="required"> {{ field }} is required and shouldn"t be empty </p>
+    </div>
+</div>
