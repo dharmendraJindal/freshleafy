@@ -1,0 +1,28 @@
+<?xml version="1.0"?><svg width="744.09448819" height="1052.3622047" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>GREEN LEAF LOGO</title>
+ <defs>
+  <linearGradient id="linearGradient3183">
+   <stop stop-color="#ffffff" stop-opacity="0" id="stop3185" offset="0"/>
+   <stop stop-color="#65c734" stop-opacity="0.630252" offset="0.662236" id="stop3191"/>
+   <stop stop-color="#ddffcd" id="stop3187" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="0.1953" x2="0.283286" y1="1.000009" x1="1.000012" id="linearGradient3988" xlink:href="#linearGradient3183"/>
+ </defs>
+ <metadata id="metadata7">image/svg+xml</metadata>
+ <g>
+  <title>Layer 1</title>
+  <g id="layer1">
+   <g id="g3979">
+    <g fill="#339900" id="g2391">
+     <path fill="#339900" fill-rule="evenodd" stroke-width="1px" id="path2383" d="m507.428589,267.933624c-27.27829,67.019226 5.546448,176.464172 -140,160c-89.291565,-103.456665 111.060883,-76.949036 140,-160z"/>
+     <path fill="#339900" fill-rule="evenodd" stroke-width="1px" id="path2385" d="m367.428589,427.933624l-68.571442,37.142822l11.428558,22.857178l57.142883,-60z"/>
+    </g>
+    <path fill="url(#linearGradient3988)" fill-rule="evenodd" stroke-width="1px" d="m369.571411,423.647919c115.338165,-115.601257 126.428589,-129.285767 126.428589,-129.285767c-58.265564,59.625549 -188.035095,42.487976 -126.428589,129.285767z" id="path3165"/>
+    <path fill="none" fill-rule="evenodd" stroke="#007800" stroke-width="2.5" stroke-linecap="round" stroke-miterlimit="4" stroke-dashoffset="0" d="m370.632355,425.597321c27.907349,-38.197388 71.244812,-73.973938 102.777344,-107.289734c15.068237,-15.92041 22.123566,-18.997986 27.294403,-34.812866" id="path2409"/>
+    <path fill="none" fill-rule="evenodd" stroke="#006100" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" d="m368.142853,426.862152c30.787781,-3.150513 57.355957,13.954529 93.49411,-20.619568c36.891296,-35.294678 35.027954,-115.655151 36.715088,-116.158691" id="path3959"/>
+    <path fill="#77c452" fill-rule="evenodd" stroke-width="1px" d="m300.285706,465.433624l11.071442,9.642822l49.642853,-42.857117l-60.714294,33.214294z" id="path3973"/>
+   </g>
+  </g>
+  <text xml:space="preserve" text-anchor="middle" font-family="Arial" font-size="29" id="svg_1" y="468.637817" x="407.905518" stroke-width="0" stroke="#000000" fill="#000000">GTP</text>
+ </g>
+</svg>

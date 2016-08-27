@@ -1,4 +1,5 @@
 <div class="row">
-    {{categoryList}}
-
+    <ul ng-repeat="category in categoryList">
+                <li>{{ category.name }}</li>
+            </ul>
 </div>
