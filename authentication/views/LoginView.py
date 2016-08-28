@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from rest_framework import status, views
 from rest_framework.response import Response
 
-from authentication.serializers import UserSerializer
+from authentication.serializers.UserSerializer import UserSerializer
 
 
 class LoginView(views.APIView):
