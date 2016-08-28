@@ -51,7 +51,8 @@ INSTALLED_APPS = (
     'rest_framework',
     'django_extensions',
     'product',
-    'authentication'
+    'authentication',
+    'image'
 )
 
 MIDDLEWARE_CLASSES = (
