@@ -8,3 +8,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer
     class Meta:
         model = UserProfile
+
+    def get_user_data(self):
+        pass
