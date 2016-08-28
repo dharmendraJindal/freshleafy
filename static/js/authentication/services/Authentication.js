@@ -52,7 +52,6 @@ productapp.factory("Authentication", ["$cookies", "$http", function ($cookies, $
     }
 
     function register(email, password, phonenumber) {
-        console.log(email, password, phonenumber, 'front end data');
         return $http.post("/api/v1/auth/register/", {
             password: password,
             email: email,
@@ -60,10 +59,12 @@ productapp.factory("Authentication", ["$cookies", "$http", function ($cookies, $
         }).then(registerSuccessFn, registerErrorFn);
 
         function registerSuccessFn(data) {
+            console.log(data, 'success');
             Authentication.login(data.data.username, data.data.password);
         }
 
         function registerErrorFn(status) {
+            console.log(data, 'faliure');
             console.error("Epic failure! with status" + status);
         }
     }

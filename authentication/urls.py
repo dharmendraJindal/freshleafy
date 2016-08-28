@@ -1,10 +1,12 @@
 from django.conf.urls import url
 
 from rest_framework import routers
-from authentication.views import AccountViewSet, LoginView, LogoutView
+from authentication.views.AccountViewSet import AccountViewSet
+from authentication.views.LoginView import LoginView
+from authentication.views.LogoutView import LogoutView
 
 router = routers.DefaultRouter()
-router.register(r'register', AccountViewSet)
+router.register(r'register', AccountViewSet, base_name="register")
 
 #test done
 

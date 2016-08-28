@@ -3,15 +3,15 @@
 
     <div class="form-group" ng-class="{ 'has-error' : username.$invalid && !username.$pristine }">
       <label>Username*</label>
-      <input type="text" placeholder="enter your username" ng-model="account.username" class="form-control" required>
-      <p ng-show="username.$invalid && !username.$pristine" class="help-block">username is required.</p>
+      <input name="username" type="text" placeholder="enter your username" ng-model="account.username" class="form-control" required>
+      <p ng-show="LoginForm.username.$invalid && !LoginForm.username.$pristine" class="help-block">username is required.</p>
     </div>
 
     <div class="form-group" ng-class="{ 'has-error' : password.$invalid && !password.$pristine }">
       <label>Password*</label>
-      <input type="password" placeholder="enter your password" ng-model="account.password" class="form-control"
+      <input name="password" type="password" placeholder="enter your password" ng-model="account.password" class="form-control"
              required>
-      <p ng-show="password.$invalid && !password.$pristine" class="help-block">password is required.</p>
+      <p ng-show="LoginForm.password.$invalid && !LoginForm.password.$pristine" class="help-block">password is required.</p>
     </div>
     <button class='btn btn-primary' ng-disabled="$invalid" type="submit"> Login </button>
 </form>
