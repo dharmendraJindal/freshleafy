@@ -1,4 +1,7 @@
 <h2>Login to your account</h2>
+<div class="alert alert-danger">
+    Invalid UserName or Password
+  </div>
 <form name="LoginForm" ng-submit="login()" novalidate>
 
     <div class="form-group" ng-class="{ 'has-error' : username.$invalid && !username.$pristine }">

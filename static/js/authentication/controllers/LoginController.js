@@ -2,9 +2,9 @@ productapp.controller("LoginController", ["$location", "$scope", "Authentication
     function ($location, $scope, Authentication) {
         $scope.account = {
             username: "",
-            password: "",
-            test : ""
+            password: ""
         };
+
         $scope.login = login;
         activate();
         function activate() {
@@ -17,6 +17,10 @@ productapp.controller("LoginController", ["$location", "$scope", "Authentication
             if($scope.LoginForm.$invalid) {
             return false;
             }
-            Authentication.login($scope.account.username, $scope.account.password);
+            Authentication.login($scope.account.username, $scope.account.password).then(function(){
+            $scope.validCredentials=true;
+            },function(){
+            $scope.validCredentials=false;
+            });
         }
     }]);
