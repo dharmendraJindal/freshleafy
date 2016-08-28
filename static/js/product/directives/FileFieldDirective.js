@@ -34,6 +34,6 @@ articlesapp.directive('fileModel', ['$parse', function ($parse) {
 
 //
 //<div class="form-group" >
-//      <label>Image</label>
+//      <label>image</label>
 //        <input type="file" class="form-control"  file-model="featured_image"/>
 //    </div>
