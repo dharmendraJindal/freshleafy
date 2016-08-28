@@ -58,16 +58,15 @@ productapp.factory("Authentication", ["$cookies", "$http","$q", function ($cooki
     function register(registerParams) {
     var deferred=$q.defer();
          $http.post("/api/v1/auth/register/", {
-            firstName: registerParams.firstName,
-            lastName: registerParams.lastName,
-            companyName: registerParams.companyName,
+            first_name: registerParams.firstName,
+            last_name: registerParams.lastName,
+            company: registerParams.companyName,
             email: registerParams.email,
             password: registerParams.password,
-            phone_number: registerParams.phonenumber
+            phonenumber: registerParams.phone_number
         }).then(registerSuccessFn, registerErrorFn);
 
         function registerSuccessFn(data) {
-            Authentication.login(data.data.username, data.data.password);
             deferred.resolve();
         }
 

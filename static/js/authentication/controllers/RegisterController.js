@@ -17,9 +17,8 @@ productapp.controller("RegisterController", ["$location", "$scope", "Authenticat
         return false;
         }
             Authentication.register($scope.account).then(function(){
-            console.log("user created");
+            $location.path('/login');
             },function(){
-            console.log("error:user creation");
             });
         }
     }]);

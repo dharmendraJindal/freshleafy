@@ -41,6 +41,7 @@ class AccountViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         data = request.data
 
+        print data
         if data:
             created_data = self.create_or_update(data, None)
             return Response(created_data, status=status.HTTP_201_CREATED)

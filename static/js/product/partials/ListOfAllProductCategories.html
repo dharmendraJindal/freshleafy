@@ -3,3 +3,25 @@
                 <li>{{ category.name }}</li>
             </ul>
 </div>
+
+  <!-- Page Features -->
+        <div class="row text-center">
+
+            <div class="col-md-3 col-sm-6 hero-feature" ng-repeat="product in products ">
+                <div class="thumbnail">
+                    <img src="http://placehold.it/800x500" alt="">
+                    <div class="caption">
+                        <h3>{{product.name}}</h3>
+                        <p>Rs {{product.price}}/{{product.unit}}</p>
+                        <p>
+                            <div class="col-xs-4"><input type="text" class="form-control" ng-model="product.quantity" placeholder="Qty" /></div><a href="#" class="btn btn-primary">Add to Cart</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- /.row -->
+
