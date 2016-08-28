@@ -8,7 +8,7 @@ from authentication.views.LogoutView import LogoutView
 router = routers.DefaultRouter()
 router.register(r'register', AccountViewSet, base_name="register")
 
-#test done
+#test done git
 
 urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
