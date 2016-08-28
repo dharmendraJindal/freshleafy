@@ -7,7 +7,6 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('image', '0001_initial'),
         ('product', '0001_initial'),
     ]
 
@@ -18,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=200)),
                 ('grade', models.CharField(max_length=200)),
-                ('image', models.OneToOneField(null=True, blank=True, to='image.Picture')),
+                ('image_path', models.CharField(max_length=500, null=True, blank=True)),
                 ('product_category', models.ManyToManyField(to='product.ProductCategory')),
             ],
             options={

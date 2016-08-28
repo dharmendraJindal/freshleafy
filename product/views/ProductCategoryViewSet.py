@@ -12,7 +12,6 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
     serializer_class = ProductCategorySerializer
 
     def list(self, request, *args, **kwargs):
-
         serializer = self.serializer_class(self.queryset, many=True)
         return Response(serializer.data)
 
