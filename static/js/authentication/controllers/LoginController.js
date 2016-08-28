@@ -1,10 +1,10 @@
 productapp.controller("LoginController", ["$location", "$scope", "Authentication",
     function ($location, $scope, Authentication) {
-        $scope.account = {
+        var account = {
             username: "",
             password: ""
         };
-
+        $scope.account=angular.copy(account);
         $scope.login = login;
         activate();
         function activate() {
@@ -17,10 +17,10 @@ productapp.controller("LoginController", ["$location", "$scope", "Authentication
             if($scope.LoginForm.$invalid) {
             return false;
             }
-            Authentication.login($scope.account.username, $scope.account.password).then(function(){
-            $scope.validCredentials=true;
+            Authentication.login($scope.account).then(function(){
+            $scope.inValidCredentials=false;
             },function(){
-            $scope.validCredentials=false;
+            $scope.inValidCredentials=true;
             });
         }
     }]);
