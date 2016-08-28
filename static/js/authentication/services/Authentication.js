@@ -1,4 +1,4 @@
-productapp.factory("Authentication", ["$cookies", "$http", function ($cookies, $http) {
+productapp.factory("Authentication", ["$cookies", "$http","$q", function ($cookies, $http,$q) {
     var Authentication = {
         getAuthenticatedAccount: getAuthenticatedAccount,
         isAuthenticated: isAuthenticated,
@@ -22,19 +22,23 @@ productapp.factory("Authentication", ["$cookies", "$http", function ($cookies, $
         return !!$cookies.get("authenticatedAccount");
     }
 
-    function login(username, password) {
-        return $http.post("/api/v1/auth/login/", {
-            username: username, password: password
+    function login(loginParams) {
+      var deferred=$q.defer();
+        $http.post("/api/v1/auth/login/", {
+            username: loginParams.username, password: loginParams.password
         }).then(loginSuccessFn, loginErrorFn);
 
         function loginSuccessFn(data) {
             Authentication.setAuthenticatedAccount(data.data);
             window.location = "/";
+            deferred.resolve();
         }
 
         function loginErrorFn(status) {
-            console.error("Epic failure! with error code" + status);
+        deferred.reject();
+           // console.error("Epic failure! with error code");
         }
+        return deferred.promise;
     }
 
     function logout() {
@@ -51,22 +55,26 @@ productapp.factory("Authentication", ["$cookies", "$http", function ($cookies, $
         }
     }
 
-    function register(email, password, phonenumber) {
-        return $http.post("/api/v1/auth/register/", {
-            password: password,
-            email: email,
-            phone_number: phonenumber
+    function register(registerParams) {
+    var deferred=$q.defer();
+         $http.post("/api/v1/auth/register/", {
+            firstName: registerParams.firstName,
+            lastName: registerParams.lastName,
+            companyName: registerParams.companyName,
+            email: registerParams.email,
+            password: registerParams.password,
+            phone_number: registerParams.phonenumber
         }).then(registerSuccessFn, registerErrorFn);
 
         function registerSuccessFn(data) {
-            console.log(data, 'success');
             Authentication.login(data.data.username, data.data.password);
+            deferred.resolve();
         }
 
         function registerErrorFn(status) {
-            console.log(data, 'faliure');
-            console.error("Epic failure! with status" + status);
+        deferred.reject();
         }
+        return deferred.promise;
     }
 
     function setAuthenticatedAccount(account) {

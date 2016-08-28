@@ -1,13 +1,25 @@
 productapp.controller("RegisterController", ["$location", "$scope", "Authentication",
     function ($location, $scope, Authentication) {
-        $scope.account = {
+        var account = {
+            firstName:"",
+            lastName:"",
             email: "",
             password: "",
-            phone_number : ""
+            confirmPassword:"",
+            phone_number : "",
+            companyName:""
         };
+        $scope.account=angular.copy(account);
         $scope.register = register;
 
         function register() {
-            Authentication.register($scope.account.email, $scope.account.password, $scope.account.phone_number);
+        if($scope.RegisterForm.$invalid){
+        return false;
+        }
+            Authentication.register($scope.account).then(function(){
+            console.log("user created");
+            },function(){
+            console.log("error:user creation");
+            });
         }
     }]);
