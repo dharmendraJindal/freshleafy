@@ -122,3 +122,4 @@ DOWNLOAD_ROOT = os.path.join(PROJECT_ROOT, "static/media/downloads/")
 # This fucking thing keeps on irritating but now it wont
 
 COMPRESS_ENABLED = True
+DEBUG = False

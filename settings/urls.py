@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from base.IndexView import IndexView
+from base.views.IndexView import IndexView
 
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name='base'),
@@ -11,4 +11,7 @@ urlpatterns = [
     url(r'^api/v1/files/', include('image.urls')),
 ]
 
-# urlpatterns += router.urls
+
+#handling page not found
+
+handler404='base.views.CustomErrorView.handle_page_not_found_404'
