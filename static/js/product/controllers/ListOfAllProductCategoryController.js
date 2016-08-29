@@ -1,6 +1,6 @@
 productapp.controller("ListOfAllProductCategoryController", ["$scope", "$routeParams", "$location",
-    "Authentication", "ProductCategoryFactory",
-    function ($scope, $rootScope, $location, Authentication, ProductCategoryFactory) {
+    "Authentication", "ProductService",
+    function ($scope, $rootScope, $location, Authentication, ProductService) {
 
         var product={
         name:'',
@@ -11,25 +11,25 @@ productapp.controller("ListOfAllProductCategoryController", ["$scope", "$routePa
         quantity:1
         };
 
-        $scope.productCategory = ProductCategoryFactory.query();
-        
-        $scope.productCategory.$promise.then(function (result) {
-            $scope.categoryList = result;
-            console.log(result);
-        });
-
         $scope.products=[];
 
-        for(var i=0;i<10;i++){
-        var prod=angular.copy(product);
-        prod.name="Potato";
-        prod.price=10;
-        prod.category="Vegetable";
-        prod.grade=1;
-        prod.unit="kg";
+        var getProducts=function(){
+          ProductService.getProducts().then(function(data){
+          $.each(data,function(index,item){
+             var prod=angular.copy(product);
+             prod.name=item.name;
+             prod.price=item.rate;
+             prod.category="Vegetable";
+             prod.grade=item.grade;
+             prod.unit=item.unit;
 
-        $scope.products.push(prod);
-        }
+             $scope.products.push(prod);
+          });
+          },function(){
+
+          });
+        };
+        getProducts();
 
     }
 ]);
