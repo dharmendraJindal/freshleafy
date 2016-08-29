@@ -5,11 +5,12 @@ from product.models.RateUnit import RateUnit
 
 
 class ProductSerialiser(serializers.HyperlinkedModelSerializer):
-    rate = serializers.SerializerMethodField('get_rate')
-    mobile = serializers.SerializerMethodField('get_unit')
+    rate = serializers.SerializerMethodField()
+    unit = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
+        fields = ('name', 'image_path', 'grade', 'rate', 'unit')
 
     def get_rate(self, obj):
         try:

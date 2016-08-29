@@ -52,7 +52,6 @@ INSTALLED_APPS = (
     'django_extensions',
     'product',
     'authentication',
-    'image'
 )
 
 MIDDLEWARE_CLASSES = (
