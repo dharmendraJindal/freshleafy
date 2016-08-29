@@ -9,4 +9,21 @@ productapp.run(["$http", "Authentication", "$location", "$rootScope",
             $rootScope.isAuthenticated = false;
             $location.url("/login");
         }
+
+        $rootScope.$on('$routeChangeSuccess', function(e, current, pre) {
+        if(Authentication.isAuthenticated())
+        {
+          if($location.path()=='/login' || $location.path()=='/register'){
+          $location.url("/product");
+          }
+        }
+        else
+        {
+         if($location.path()!='/login' && $location.path()!='/register'){
+          $location.url("/login");
+          }
+        }
+          console.log('Current route name: ' + $location.path());
+
+    });
     }]);
