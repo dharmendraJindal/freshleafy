@@ -3,8 +3,8 @@ productapp.config(["$routeProvider", "$resourceProvider", "$locationProvider",
         $resourceProvider.defaults.stripTrailingSlashes = false;
         $routeProvider
             .when("/", {
-                templateUrl: "/static/js/product/partials/ListOfAllProductCategories.html",
-                controller: "ListOfAllProductCategoryController"
+                controller: "ListOfAllProductCategoryController",
+                templateUrl: "/static/js/product/partials/ListOfAllProductCategories.html"
             })
             .when("/login", {
                 controller: "LoginController",
@@ -13,6 +13,11 @@ productapp.config(["$routeProvider", "$resourceProvider", "$locationProvider",
             .when("/register", {
                 controller: "RegisterController",
                 templateUrl: "/static/js/authentication/partials/register.html"
+            })
+            
+            .when("/testngcart", {
+                controller: "TestNGCartController",
+                templateUrl: "/static/js/product/partials/TestNGCart.html"
             })
             .otherwise({
                 redirectTo: '/'
