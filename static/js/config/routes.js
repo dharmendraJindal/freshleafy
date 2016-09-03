@@ -8,11 +8,11 @@ productapp.config(["$routeProvider", "$resourceProvider", "$locationProvider",
             })
             .when("/login", {
                 controller: "LoginController",
-                templateUrl: "/static/partials/authentication/login.html"
+                templateUrl: "/static/js/authentication/partials/login.html"
             })
             .when("/register", {
                 controller: "RegisterController",
-                templateUrl: "/static/partials/authentication/register.html"
+                templateUrl: "/static/js/authentication/partials/register.html"
             })
             .otherwise({
                 redirectTo: '/'
