@@ -63,3 +63,69 @@ img {
 .opacity-light {
     opacity: 0.3;
 }
+
+
+
+/* Home page css....................................................................................................*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* css used while tesitng various home page */
+
+body {
+/*css for full size background image*/
+  background-size: cover;
+    background-position: center;
+  height: 500px;
+    width: 500px;
+
+
+}
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
+
+
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+ .brignInOneLIne{
+  display: inline-block;
+}
+
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+
+
+
+
