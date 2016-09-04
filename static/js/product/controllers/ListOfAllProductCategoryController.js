@@ -1,6 +1,6 @@
 productapp.controller("ListOfAllProductCategoryController", ["$scope", "$routeParams", "$location",
-    "Authentication", "ProductService",
-    function ($scope, $rootScope, $location, Authentication, ProductService) {
+    "Authentication", "ProductService",  "ngCart",
+    function ($scope, $rootScope, $location, Authentication, ProductService, ngCart) {
 
         var product = {
             name: '',

@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^api/v1/auth/', include('authentication.urls')),
     url(r'^api/v1/product/', include('product.urls')),
     url(r'^api/v1/files/', include('image.urls')),
-    url(r'^.*$', RedirectToHome.as_view(), name='redirect_to_home')
+    # url(r'^.*$', RedirectToHome.as_view(), name='redirect_to_home')
 ]
