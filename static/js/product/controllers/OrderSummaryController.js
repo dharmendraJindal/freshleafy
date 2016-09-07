@@ -1,15 +1,14 @@
-productapp.controller("OrderSummaryController", ["$scope", "$routeParams", "$location", "OrderSummaryService",
-    function ($scope, $routeParams, $location, OrderSummaryService) {
+productapp.controller("OrderSummaryController", ["$scope", "$routeParams", "$location", "UserOrderService",
+    function ($scope, $routeParams, $location, UserOrderService) {
 
-        var getOrders = function () {
-            OrderSummaryService.getOrderSummary().then(function (data) {
-                console.log(data);
-                $scope.order = data[0];
+        var getTotalOrders = function () {
+            UserOrderService.getUserOrders().then(function (data) {
+                $scope.orderedProducts = data;
             }, function () {
 
             });
         };
-        getOrders();
-
+        
+        getTotalOrders();
 
     }]);

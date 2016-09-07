@@ -2,7 +2,7 @@ import django
 django.setup()
 
 from product.models.OrderedProduct import OrderedProduct
-from product.models.UserOrderSummary import UserOrderSummary
+from product.models.UserOrder import UserOrderSummary
 from product.models.Product import Product
 from product.models.RateUnit import RateUnit
 from django.contrib.auth.models import User

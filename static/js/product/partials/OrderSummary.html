@@ -1,13 +1,17 @@
-<div>
-    <div class="panel">
+
+<div class=container>
+    <div class="row">
+<div class="panel-group">
+    <div class="panel panel-default">
         <div class="panel-heading">
-            View Orders
+            <strong><i class="fa fa-align-justify" aria-hidden="true"></i>
+                Orders</strong>
 
         </div>
         <div class="panel-body">
-            <table>
+            <table class="table table-hover">
                 <thead>
-                <th>DateTime</th>
+                <th>Datetime</th>
                 <th>
                     Product Name
                 </th>
@@ -20,12 +24,12 @@
                 </thead>
 
                 <tbody>
-                <tr ng-repeat="product in order.ordered_product">
-                    <td>{{ order.order_timestamp }}</td>
-                    <td>{{ product.product_name }}</td>
-                    <td>{{ product.quantity }} {{ product.unit }}</td>
-                    <td>{{ product.price }}</td>
-
+                <tr ng-repeat="orderedProduct in orderedProducts">
+                    <td>{{ orderedProduct.order_timestamp | date:'medium' }}</td>
+                    <td>{{ orderedProduct.product_name }}</td>
+                    <td>{{ orderedProduct.quantity }} {{ orderedProduct.unit }}</td>
+                    <td>{{ orderedProduct.price }} <i class="fa fa-inr" aria-hidden="true"></i>
+                    </td>
                 </tr>
                 </tbody>
 
@@ -35,3 +39,4 @@
     </div>
 
 </div>
+    </div></div>
