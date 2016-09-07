@@ -20,7 +20,7 @@ class LoginView(views.APIView):
 
                 serialized = UserSerializer(account)
 
-                return Response(serialized.data)
+                return Response(serialized.data, status=status.HTTP_200_OK)
             else:
                 return Response({
                     'status': 'Unauthorized',

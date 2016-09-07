@@ -2,24 +2,17 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
-from product.models import Product
-from product.models import ProductCategory
-from product.serialisers.ProductSerialiser import ProductSerialiser
+from product.models.UserOrderSummary import UserOrderSummary
+from product.serialisers.UserOrderSummarySerialiser import UserOrderSummarySerialiser
 
 
-class (viewsets.ModelViewSet):
+class UserOrderSummaryViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly,)
-    queryset = Product.objects.all()
-    serializer_class = ProductSerialiser
+    queryset = UserOrderSummary.objects.all()
+    serializer_class = UserOrderSummarySerialiser
 
     def list(self, request, *args, **kwargs):
-        product_category_name = request.GET.get('product_category_name', None)
-        if product_category_name:
-            try:
-                product_category = ProductCategory.objects.get(name=product_category_name)
-                self.queryset = Product.objects.filter(product_category=product_category)
-            except ProductCategory.DoesNotExist:
-                print "Product Category Not Found, Sending All Products"
-                pass
-        serializer = self.serializer_class(self.queryset, many=True)
+        user = request.user
+        queryset = self.queryset.filter(user=user)
+        serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
