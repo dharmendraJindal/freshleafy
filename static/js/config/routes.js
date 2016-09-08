@@ -1,31 +1,35 @@
 productapp.config(["$routeProvider", "$resourceProvider", "$locationProvider",
     function ($routeProvider, $resourceProvider, $locationProvider) {
+        console.log('in routes');
         $resourceProvider.defaults.stripTrailingSlashes = false;
+
         $routeProvider
-            .when("/", {
+            .when("/home", {
                 controller: "ListOfAllProductCategoryController",
                 templateUrl: "/static/js/product/partials/ListOfAllProductCategories.html"
-            })
-            .when("/login", {
+            }
+
+            )
+            .when("/home/login", {
                 controller: "LoginController",
                 templateUrl: "/static/js/authentication/partials/login.html"
             })
-            .when("/register", {
+            .when("/home/register", {
                 controller: "RegisterController",
                 templateUrl: "/static/js/authentication/partials/register.html"
             })
             
-            .when("/vieworders", {
+            .when("/home/vieworders", {
                 controller: "OrderSummaryController",
                 templateUrl: "/static/js/product/partials/OrderSummary.html"
             })
             
-            .when("/testngcart", {
+            .when("/home/testngcart", {
                 controller: "TestNGCartController",
                 templateUrl: "/static/js/product/partials/TestNGCart.html"
             })
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/home'
             });
 
         $locationProvider.html5Mode(true);

@@ -1,5 +1,6 @@
 productapp.controller("LoginController", ["$location", "$scope", "Authentication",
     function ($location, $scope, Authentication) {
+
         var account = {
             username: "",
             password: ""
@@ -9,7 +10,7 @@ productapp.controller("LoginController", ["$location", "$scope", "Authentication
         activate();
         function activate() {
             if (Authentication.isAuthenticated()) {
-                $location.url("/");
+                $location.url("/home");
             }
         }
 

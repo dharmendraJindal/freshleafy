@@ -20,23 +20,22 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">More <span
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i>
+                        <li><a href="/home"><i class="fa fa-home" aria-hidden="true"></i>
                             Home</a></li>
-                        <li ng-if="UserLoggedIn"><a href="/"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        <li ng-if="UserLoggedIn"><a href="/home"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
 
                             By products</a></li>
-                        <li ng-if="UserLoggedIn"><a href="/vieworders"><i class="fa fa-eye" aria-hidden="true"></i>
+                        <li ng-if="UserLoggedIn"><a href="/home/vieworders"><i class="fa fa-eye" aria-hidden="true"></i>
                             View Orders</a></li>
-                        <li ng-if="!UserLoggedIn"><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                        <li ng-if="!UserLoggedIn"><a href="/home/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
                             Login</a></li>
                         <li ng-if="UserLoggedIn"><a href="javascript:void(0)" ng-click="logout()"> <i
                                 class="fa fa-sign-out" aria-hidden="true"></i>
                             Logout</a></li>
                     </ul>
                 </li>
-                <li ng-if="!UserLoggedIn"><a href="/register">Signup</a></li>
-                <li><a href="/testngcart">TestCasrt</a></li>
-                <li><ngcart-summary></ngcart-summary>Cart Summary</li>
+                <li ng-if="!UserLoggedIn"><a href="/home/register">Signup</a></li>
+                <li><a href="/home/testngcart">TestCasrt</a></li>
 
 
 
