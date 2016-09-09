@@ -1,6 +1,8 @@
-productapp.controller("ListOfAllProductCategoryController", ["$scope", "$routeParams", "$location",
-    "Authentication", "ProductService",  "ngCart",
+productapp.controller("ListOfAllProductCategoryController", ["$scope", "$rootScope", "$location",
+    "Authentication", "ProductService",  "ngCart","$rootScope",
     function ($scope, $rootScope, $location, Authentication, ProductService, ngCart) {
+        ngCart.setTaxRate(7.5);
+        ngCart.setShipping(2.99);
 
         var product = {
             name: '',
@@ -18,7 +20,7 @@ productapp.controller("ListOfAllProductCategoryController", ["$scope", "$routePa
                 $.each(data, function (index, item) {
                     var prod = angular.copy(product);
                     prod.name = item.name;
-                    prod.price = item.rate;
+                    prod.price = parseFloat(item.rate);
                     prod.category = "Vegetable";
                     prod.grade = item.grade;
                     prod.unit = item.unit;
