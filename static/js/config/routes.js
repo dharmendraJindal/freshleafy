@@ -24,6 +24,11 @@ productapp.config(["$routeProvider", "$resourceProvider", "$locationProvider",
                 templateUrl: "/static/js/product/partials/OrderSummary.html"
             })
             
+            .when("/home/profile", {
+                controller: "ProfileController",
+                templateUrl: "/static/js/authentication/partials/profile.html"
+            })
+            
             .when("/home/testngcart", {
                 controller: "TestNGCartController",
                 templateUrl: "/static/js/product/partials/TestNGCart.html"

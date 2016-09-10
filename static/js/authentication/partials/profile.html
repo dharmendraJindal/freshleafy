@@ -1,0 +1,68 @@
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <h2>Your Profile Details.</h2>
+            <form name="ProfileForm" ng-submit="updateProfile()" novalidate>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : ProfileForm.firstName.$invalid && !ProfileForm.firstName.$pristine }">
+                            <input type="text" name="firstName" placeholder="enter your firstName"
+                                   ng-model="profile.firstName"
+                                   class="form-control input-lg" required>
+                            <p ng-show="ProfileForm.firstName.$invalid && !ProfileForm.firstName.$pristine"
+                               class="help-block">
+                                First Name is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : ProfileForm.lastName.$invalid && !ProfileForm.lastName.$pristine }">
+                            <input type="text" name="lastName" placeholder="enter your lastName"
+                                   ng-model="profile.lastName"
+                                   class="form-control input-lg" required>
+                            <p ng-show="ProfileForm.lastName.$invalid && !ProfileForm.lastName.$pristine"
+                               class="help-block">Last
+                                Name is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : ProfileForm.companyName.$invalid && !ProfileForm.companyName.$pristine }">
+                        <input type="text" name="companyName" placeholder="enter your company name"
+                               ng-model="profile.companyName"
+                               class="form-control input-lg" required>
+                        <p ng-show="ProfileForm.companyName.$invalid && !ProfileForm.companyName.$pristine"
+                           class="help-block">Company Name is
+                            required.</p>
+                    </div>
+
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : ProfileForm.email.$invalid && !ProfileForm.email.$pristine }">
+                        <input type="email" name="email" placeholder="enter your email" ng-model="profile.email"
+                               class="form-control input-lg"
+                               required>
+                        <p ng-show="ProfileForm.email.$invalid && !ProfileForm.email.$pristine" class="help-block">
+                            email is required.</p>
+                    </div>
+
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : ProfileForm.phoneNumber.$invalid && !ProfileForm.phoneNumber.$pristine }">
+                        <input type="text" name="phoneNumber" placeholder="enter your phone number"
+                               ng-model="profile.phone_number"
+                               class="form-control input-lg" required>
+                        <p ng-show="ProfileForm.phoneNumber.$invalid && !ProfileForm.phoneNumber.$pristine"
+                           class="help-block">phone number is
+                            required.</p>
+                    </div>
+                    <button class='btn btn-primary' ng-disabled="$invalid" type="submit"> Register</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>

@@ -22,11 +22,10 @@
                     <ul class="dropdown-menu">
                         <li><a href="/home"><i class="fa fa-home" aria-hidden="true"></i>
                             Home</a></li>
-                        <li ng-if="UserLoggedIn"><a href="/home"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-
-                            By products</a></li>
                         <li ng-if="UserLoggedIn"><a href="/home/vieworders"><i class="fa fa-eye" aria-hidden="true"></i>
                             View Orders</a></li>
+                        <li ng-if="UserLoggedIn"><a href="/home/profile"><i class="fa fa-user" aria-hidden="true"></i>
+                            Profile</a></li>
                         <li ng-if="!UserLoggedIn"><a href="/home/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
                             Login</a></li>
                         <li ng-if="UserLoggedIn"><a href="javascript:void(0)" ng-click="logout()"> <i

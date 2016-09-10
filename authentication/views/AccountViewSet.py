@@ -13,18 +13,29 @@ class AccountViewSet(viewsets.ModelViewSet):
     user_profile_serializer_class = UserProfileSerializer
 
     def list(self, request, *args, **kwargs):
-        all_users = User.objects.all()
-        all_user_data = list()
 
-        for user in all_users:
-            user_data = self.serializer_class(user).data
+        user = request.user
 
-            user_profile = UserProfile.objects.get(user=self.request.user)
-            user_profile_data = self.user_profile_serializer_class(user_profile).data
-            user_data.update(user_profile_data)
-            all_user_data.append(user_data)
+        if user.username == 'webadmin':
+            all_users = User.objects.all()
+            all_user_data = list()
 
-        return Response(all_user_data)
+            for user in all_users:
+                user_data = self.serializer_class(user).data
+
+                user_profile = UserProfile.objects.get(user=self.request.user)
+                user_profile_data = self.user_profile_serializer_class(user_profile).data
+                user_data.update(user_profile_data)
+                all_user_data.append(user_data)
+            return Response(all_user_data)
+
+        user_data = self.serializer_class(user).data
+
+        user_profile = UserProfile.objects.get(user=self.request.user)
+        user_profile_data = self.user_profile_serializer_class(user_profile).data
+        user_data.update(user_profile_data)
+
+        return Response(user_data)
 
     def retrieve(self, request, *args, **kwargs):
         username = kwargs.get(self.lookup_field)
