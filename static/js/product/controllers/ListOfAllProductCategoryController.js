@@ -1,8 +1,6 @@
 productapp.controller("ListOfAllProductCategoryController", ["$scope", "$rootScope", "$location",
     "Authentication", "ProductService",  "ngCart","$rootScope",
     function ($scope, $rootScope, $location, Authentication, ProductService, ngCart) {
-        ngCart.setTaxRate(7.5);
-        ngCart.setShipping(2.99);
 
         var product = {
             name: '',
@@ -33,6 +31,7 @@ productapp.controller("ListOfAllProductCategoryController", ["$scope", "$rootSco
             });
         };
         getProducts();
+
 
     }
 ]);

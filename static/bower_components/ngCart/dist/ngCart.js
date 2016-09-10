@@ -38,7 +38,7 @@ angular.module('ngCart', ['ngCart.directives'])
             };
         };
 
-        this.addItem = function (id, name, price, quantity, data) {
+        this.addItem = function (id, name, price, quantity,unit, data) {
 
             var inCart = this.getItemById(id);
 
@@ -46,7 +46,7 @@ angular.module('ngCart', ['ngCart.directives'])
                 //Update quantity of an item if it's already in the cart
                 inCart.setQuantity(quantity, false);
             } else {
-                var newItem = new ngCartItem(id, name, price, quantity, data);
+                var newItem = new ngCartItem(id, name, price, quantity,unit, data);
                 this.$cart.items.push(newItem);
                 $rootScope.$broadcast('ngCart:itemAdded', newItem);
             }
@@ -186,7 +186,7 @@ angular.module('ngCart', ['ngCart.directives'])
             _self.$cart.tax = storedCart.tax;
 
             angular.forEach(storedCart.items, function (item) {
-                _self.$cart.items.push(new ngCartItem(item._id,  item._name, item._price, item._quantity, item._data));
+                _self.$cart.items.push(new ngCartItem(item._id,  item._name, item._price, item._quantity,item._unit, item._data));
             });
             this.$save();
         };
@@ -199,10 +199,12 @@ angular.module('ngCart', ['ngCart.directives'])
 
     .factory('ngCartItem', ['$rootScope', '$log', function ($rootScope, $log) {
 
-        var item = function (id, name, price, quantity, data) {
+        var item = function (id, name, price, quantity,unit, data) {
+            console.log(unit, 'unit');
             this.setId(id);
             this.setName(name);
             this.setPrice(price);
+            this.setUnit(unit);
             this.setQuantity(quantity);
             this.setData(data);
         };
@@ -246,6 +248,15 @@ angular.module('ngCart', ['ngCart.directives'])
             return this._price;
         };
 
+        item.prototype.setUnit = function(unit){
+            if (unit)  this._unit = unit;
+            else {
+                $log.error('A unit must be provided');
+            }
+        };
+        item.prototype.getUnit = function(){
+            return this._unit;
+        };
 
         item.prototype.setQuantity = function(quantity, relative){
 
@@ -291,6 +302,7 @@ angular.module('ngCart', ['ngCart.directives'])
                 name: this.getName(),
                 price: this.getPrice(),
                 quantity: this.getQuantity(),
+                unit: this.getUnit(),
                 data: this.getData(),
                 total: this.getTotal()
             }
@@ -351,6 +363,7 @@ angular.module('ngCart.directives', ['ngCart.fulfilment'])
                 quantity:'@',
                 quantityMax:'@',
                 price:'@',
+                unit : '@',
                 data:'='
             },
             transclude: true,

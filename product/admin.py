@@ -14,8 +14,8 @@ admin.site.register(ProductCategory, ProductCategoryAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'grade', 'image_path')
-    list_filter = ["name", "grade"]
+    list_display = ('name', 'grade', 'image_path', 'rate', 'unit')
+    list_filter = ["name", "grade", 'unit']
 
 
 admin.site.register(Product, ProductAdmin)

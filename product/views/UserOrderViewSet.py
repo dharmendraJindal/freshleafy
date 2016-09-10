@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
@@ -18,3 +18,7 @@ class UserOrderViewSet(viewsets.ModelViewSet):
         queryset = OrderedProduct.objects.filter(user_order__in=user_orders)
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        print request.data
+        return Response({}, status=status.HTTP_200_OK)
