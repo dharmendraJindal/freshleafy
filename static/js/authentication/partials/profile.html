@@ -1,76 +1,117 @@
 <div class=container>
-    <div class="row">
-        <div class="panel-group">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <strong><i class="fa fa-user" aria-hidden="true"></i>
-                        Your Profile</strong>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong><i class="fa fa-user" aria-hidden="true"></i>
+                            Your Profile</strong>
 
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
+
+                            <tbody>
+                            <tr>
+                                <td>First Name</td>
+                                <td ng-if="profile.firstName">{{ profile.firstName }}</td>
+                                <td ng-if="!profile.firstName">Not available</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td ng-if="profile.lastName">{{ profile.lastName }}</td>
+                                <td ng-if="!profile.lastName">Not available</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td ng-if="profile.email">{{ profile.email }}</td>
+                                <td ng-if="!profile.email">Not available</td>
+                            </tr>
+                            <tr>
+                                <td>Company</td>
+                                <td ng-if="profile.companyName">{{ profile.companyName }}</td>
+                                <td ng-if="!profile.companyName">Not available</td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number</td>
+                                <td ng-if="profile.phoneNumber">{{ profile.phoneNumber }}</td>
+                                <td ng-if="!profile.phoneNumber">Not available</td>
+                            </tr>
+                            <tr>
+                                <td>Alternate Phone Number</td>
+                                <td ng-if="profile.alternatePhoneNumber">{{ profile.alternatePhoneNumber }}</td>
+                                <td ng-if="!profile.alternatePhoneNumber">Not available</td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <table class="table table-hover">
 
-                        <tbody>
-                        <tr>
-                            <td>First Name</td>
-                            <td>{{ profile.firstName }}</td>
-                        </tr>
-                        <tr>
-                            <td>Last Name</td>
-                            <td>{{ profile.lastName }}</td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>{{ profile.email }}</td>
-                        </tr>
-                        <tr>
-                            <td>Company</td>
-                            <td>{{ profile.companyName }}</td>
-                        </tr>
-                        <tr>
-                            <td>Phone Number</td>
-                            <td>{{ profile.phoneNumber }}</td>
-                        </tr>
-                        <tr>
-                            <td>Alternate Phone Number</td>
-                            <td>{{ profile.alternatePhoneNumber }}</td>
-                        </tr>
-                        <tr>
-                            <td>Apartment/Locality Name</td>
-                            <td>{{ profile.addressOne }}</td>
-                        </tr>
-                        <tr>
-                            <td>Location</td>
-                            <td>{{ profile.addressTwo }}</td>
-                        </tr>
-                        <tr>
-                            <td>Landmark</td>
-                            <td>{{ profile.street }}</td>
-                        </tr>
-                        <tr>
-                            <td>City</td>
-                            <td>{{ profile.city }}</td>
-                        </tr>
-                        <tr>
-                            <td>District</td>
-                            <td>{{ profile.district }}</td>
-                        </tr>
-                        <tr>
-                            <td>State</td>
-                            <td>{{ profile.state }}</td>
-                        </tr>
-                        </tbody>
-
-                    </table>
-
-                </div>
             </div>
-
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong><i class="fa fa-user" aria-hidden="true"></i>
+                            Your Address</strong>
+
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
+
+                            <tbody>
+                            <tr>
+                                <td>Apartment/Locality Name</td>
+                                <td ng-if="profile.addressOne">{{ profile.addressOne }}</td>
+                                <td ng-if="!profile.addressOne">Not available</td>
+                            </tr>
+                            <tr>
+                                <td>Location</td>
+                                <td ng-if="profile.addressTwo">{{ profile.addressTwo }}</td>
+                                <td ng-if="!profile.addressTwo">Not available</td>
+                            </tr>
+                            <tr>
+                                <td>Landmark</td>
+                                <td ng-if="profile.street">{{ profile.street }}</td>
+                                <td ng-if="!profile.street">Not available</td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td ng-if="profile.city">{{ profile.city }}</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>District</td>
+                                <td ng-if="profile.district">{{ profile.district }}</td>
+                                <td ng-if="!profile.district">Not available</td>
+
+                            </tr>
+                            <tr>
+                                <td>State</td>
+                                <td ng-if="profile.state">{{ profile.state }}</td>
+                                <td ng-if="!profile.state">Not available</td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#profileUpdateModal">
-        Update Profile
+        Update Profile and address
     </button>
+        </div>
 
 </div>
 
@@ -250,9 +291,8 @@
                     </div>
 
 
-
                     <button class='btn btn-primary' ng-disabled="$invalid" type="submit"> Update
-                        Profile
+                        Profile and address
                     </button>
                 </form>
 
