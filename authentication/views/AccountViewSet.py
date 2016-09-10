@@ -8,7 +8,8 @@ from authentication.serializers.UserSerializer import UserSerializer
 
 
 class AccountViewSet(viewsets.ModelViewSet):
-    lookup_field = 'email'
+    lookup_field = 'id'
+    queryset = User.objects.all()
     serializer_class = UserSerializer
     user_profile_serializer_class = UserProfileSerializer
 
@@ -30,7 +31,6 @@ class AccountViewSet(viewsets.ModelViewSet):
             return Response(all_user_data)
 
         user_data = self.serializer_class(user).data
-
         user_profile = UserProfile.objects.get(user=self.request.user)
         user_profile_data = self.user_profile_serializer_class(user_profile).data
         user_data.update(user_profile_data)
@@ -38,8 +38,8 @@ class AccountViewSet(viewsets.ModelViewSet):
         return Response(user_data)
 
     def retrieve(self, request, *args, **kwargs):
-        username = kwargs.get(self.lookup_field)
-        user = User.objects.get(username=username)
+        user_id = kwargs.get(self.lookup_field)
+        user = User.objects.get(id=user_id)
 
         user_data = self.serializer_class(user).data
         user_profile = UserProfile.objects.get(user=self.request.user)
@@ -51,10 +51,8 @@ class AccountViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         data = request.data
-
-        print data
         if data:
-            created_data = self.create_or_update(data, None)
+            created_data = self.create_or_update_profile(data, None)
             return Response(created_data, status=status.HTTP_201_CREATED)
         return Response({
             'status': 'Bad request',
@@ -64,26 +62,23 @@ class AccountViewSet(viewsets.ModelViewSet):
     def update(self, request, *args, **kwargs):
         data = request.data
         if data:
-            username = kwargs.get(self.lookup_field)
-            updated_data = self.create_or_update(data, username)
+            user_id = kwargs.get(self.lookup_field)
+            updated_data = self.create_or_update_profile(data, user_id)
             return Response(updated_data, status=status.HTTP_200_OK)
         return Response({
             'status': 'Bad request',
             'message': 'Account could not be created with received data.'
         }, status=status.HTTP_400_BAD_REQUEST)
 
-        pass
-
-    def create_or_update(self, data, username):
-        if not username:
+    def create_or_update_profile(self, data, user_id):
+        if not user_id:
 
             email = data.get('email', None)
             password = data.get('password', None)
-
             user = User.objects.create_user(email=email, username=email, password=password)
 
         else:
-            user = User.objects.get(username=username)
+            user = User.objects.get(id=user_id)
             email = user.email
 
         first_name = data.get('first_name', None)
@@ -91,10 +86,11 @@ class AccountViewSet(viewsets.ModelViewSet):
 
         user.first_name = first_name
         user.last_name = last_name
-
         user.save()
 
         # create user profile
+
+        print data
 
         address_one = data.get('address_one', None)
         address_two = data.get('address_two', None)
@@ -108,19 +104,22 @@ class AccountViewSet(viewsets.ModelViewSet):
         phonenumber_two = data.get('phonenumber_two', None)
         company = data.get('company', None)
 
-        user_profile, created = UserProfile.objects.get_or_create(user=user,
-                                                                  address_one=address_one,
-                                                                  address_two=address_two,
-                                                                  street=street,
-                                                                  landmark=landmark,
-                                                                  district=district,
-                                                                  city=city,
-                                                                  state=state,
-                                                                  pincode=pincode,
-                                                                  phonenumber=phonenumber,
-                                                                  phonenumber_two=phonenumber_two,
-                                                                  company=company
-                                                                  )
+        user_profile, created = UserProfile.objects.get_or_create(user=user)
+
+        user_profile.address_one = address_one
+        user_profile.address_two = address_two
+        user_profile.street = street
+        user_profile.landmark = landmark
+        user_profile.district = district
+        user_profile.city = city
+        user_profile.state = state
+        user_profile.pincode = pincode
+        user_profile.phonenumber = phonenumber
+        user_profile.phonenumber_two = phonenumber_two
+        user_profile.company = company
+
+        user_profile.save()
 
         data['username'] = email
+
         return data

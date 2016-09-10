@@ -10,6 +10,10 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'email', 'username','first_name', 'last_name', 'password')
+        lookup_field= 'email'
+        extra_kwargs = {
+            'url': {'lookup_field': 'email'}
+        }
 
     def create(self, validated_data):
         return User.objects.create(**validated_data)

@@ -1,32 +1,34 @@
 
 productapp.controller("ProfileController", ["$location", "$scope", "Authentication", function ($location, $scope, Authentication) {
+
+    $scope.showProfileUpdateSuccessMessage = false;
+
     var profile = {
         firstName: "",
         lastName: "",
         email: "",
-        password: "",
-        confirmPassword: "",
         phone_number: "",
         companyName: ""
     };
     $scope.profile = angular.copy(profile);
-    $scope.updateProfile = updateProfile();
+    $scope.updateProfile = updateProfile;
     viewProfile();
 
 
     function viewProfile() {
         Authentication.getProfile().then(function (profileAPIData) {
+            console.log(profileAPIData, 'pad');
             loadProfileData(profileAPIData);
         }, function () {
         });
     }
 
     function loadProfileData(profileAPIData) {
-
+        
+        $scope.profile.userID = profileAPIData.user_id;
         $scope.profile.firstName = profileAPIData.first_name ;
         $scope.profile.lastName = profileAPIData.last_name;
         $scope.profile.email = profileAPIData.email;
-        $scope.profile.password = profileAPIData.password;
         $scope.profile.phone_number = profileAPIData.phonenumber;
         $scope.profile.companyName = profileAPIData.company
 
@@ -37,8 +39,10 @@ productapp.controller("ProfileController", ["$location", "$scope", "Authenticati
         // if ($scope.ProfileForm.$invalid) {
         //     return false;
         // }
-        Authentication.updateProfile($scope.profile).then(function () {
-            $location.path('/home/profile');
+        console.log('in update fn');
+        Authentication.updateProfile($scope.profile).then(function (data) {
+            $scope.showProfileUpdateSuccessMessage = true;
+            viewProfile();
         }, function () {
         });
     }

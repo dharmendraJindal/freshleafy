@@ -1,42 +1,42 @@
-
 <div class=container>
     <div class="row">
-<div class="panel-group">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <strong><i class="fa fa-align-justify" aria-hidden="true"></i>
-                Orders</strong>
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong><i class="fa fa-align-justify" aria-hidden="true"></i>
+                        Orders</strong>
 
-        </div>
-        <div class="panel-body">
-            <table class="table table-hover">
-                <thead>
-                <th>Datetime</th>
-                <th>
-                    Product Name
-                </th>
-                <th>
-                    Quantity
-                </th>
-                <th>
-                    Rs
-                </th>
-                </thead>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <th>Datetime</th>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Rs
+                        </th>
+                        </thead>
 
-                <tbody>
-                <tr ng-repeat="orderedProduct in orderedProducts">
-                    <td>{{ orderedProduct.order_timestamp | date:'medium' }}</td>
-                    <td>{{ orderedProduct.product_name }}</td>
-                    <td>{{ orderedProduct.quantity }} {{ orderedProduct.unit }}</td>
-                    <td>{{ orderedProduct.price }} <i class="fa fa-inr" aria-hidden="true"></i>
-                    </td>
-                </tr>
-                </tbody>
+                        <tbody>
+                        <tr ng-repeat="orderedProduct in orderedProducts">
+                            <td>{{ orderedProduct.order_timestamp | date:'medium' }}</td>
+                            <td>{{ orderedProduct.product_name }}</td>
+                            <td>{{ orderedProduct.quantity }} {{ orderedProduct.unit }}</td>
+                            <td>{{ orderedProduct.price }} <i class="fa fa-inr" aria-hidden="true"></i>
+                            </td>
+                        </tr>
+                        </tbody>
 
-            </table>
+                    </table>
+
+                </div>
+            </div>
 
         </div>
     </div>
-
 </div>
-    </div></div>

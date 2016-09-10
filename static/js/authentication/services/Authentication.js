@@ -8,7 +8,7 @@ productapp.factory("Authentication", ["$cookies", "$http", "$q", "$rootScope", f
         unauthenticate: unauthenticate,
         register: register,
         getProfile: getProfile,
-        updateProfile : updateProfile
+        updateProfile: updateProfile
 
     };
 
@@ -110,18 +110,16 @@ productapp.factory("Authentication", ["$cookies", "$http", "$q", "$rootScope", f
 
     function updateProfile(ProfileParams) {
         var deferred = $q.defer();
-        $http.post("/api/v1/auth/register/", {
+        var url = "/api/v1/auth/register/" + ProfileParams.userID ;
+        var data = {
             first_name: ProfileParams.firstName,
             last_name: ProfileParams.lastName,
             company: ProfileParams.companyName,
             email: ProfileParams.email,
-            password: ProfileParams.password,
             phonenumber: ProfileParams.phone_number
-        }).then(function () {
-
-        }, function () {
-
-        });
+        };
+        console.log(data);
+        $http.put(url, data);
         return deferred.promise;
     }
 
