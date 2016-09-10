@@ -1,131 +1,263 @@
-<div class="container">
+<div class=container>
+    <div class="row">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong><i class="fa fa-user" aria-hidden="true"></i>
+                        Your Profile</strong>
 
-
-    <div class=container>
-        <div class="row">
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong><i class="fa fa-align-justify" aria-hidden="true"></i>
-                            Your Profile</strong>
-
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-hover">
-
-                            <tbody>
-                            <tr><td>First Name</td><td>{{ profile.firstName }}</td></tr>
-                            <tr><td>Last Name</td><td>{{ profile.lastName }}</td></tr>
-                            <tr><td>Email</td><td>{{ profile.email }}</td></tr>
-                            <tr><td>Company</td><td>{{ profile.companyName }}</td></tr>
-                            <tr><td>Phone Number</td><td>{{ profile.phone_number }}</td></tr>
-                            </tbody>
-
-                        </table>
-
-                    </div>
                 </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
 
+                        <tbody>
+                        <tr>
+                            <td>First Name</td>
+                            <td>{{ profile.firstName }}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td>{{ profile.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>{{ profile.email }}</td>
+                        </tr>
+                        <tr>
+                            <td>Company</td>
+                            <td>{{ profile.companyName }}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td>{{ profile.phoneNumber }}</td>
+                        </tr>
+                        <tr>
+                            <td>Alternate Phone Number</td>
+                            <td>{{ profile.alternatePhoneNumber }}</td>
+                        </tr>
+                        <tr>
+                            <td>Apartment/Locality Name</td>
+                            <td>{{ profile.addressOne }}</td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>{{ profile.addressTwo }}</td>
+                        </tr>
+                        <tr>
+                            <td>Landmark</td>
+                            <td>{{ profile.street }}</td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td>{{ profile.city }}</td>
+                        </tr>
+                        <tr>
+                            <td>District</td>
+                            <td>{{ profile.district }}</td>
+                        </tr>
+                        <tr>
+                            <td>State</td>
+                            <td>{{ profile.state }}</td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
             </div>
+
         </div>
-        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#profileUpdateModal">
-                            Update Profile
-                        </button>
+    </div>
+    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#profileUpdateModal">
+        Update Profile
+    </button>
 
+</div>
 
-        <div class="modal fade" id="profileUpdateModal" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Update Profile</h4>
+<div class="modal fade"
+     id="profileUpdateModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="profileUpdateModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="profileUpdateModalLabel">Update Profile</h4>
+            </div>
+
+            <div class="modal-body">
+                <form name="ProfileForm" role="form" class="form-horizontal" ng-submit="updateProfile()" novalidate>
+
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : ProfileForm.firstName.$invalid && !ProfileForm.firstName.$pristine }">
+                        <label class="col-sm-2 control-label" for="profileEmail">First Name</label>
+                        <div class="col-sm-10">
+                            <input id="profileEmail"
+                                   type="text"
+                                   name="firstName"
+                                   placeholder="enter your firstName"
+                                   ng-model="profile.firstName"
+                                   class="form-control"
+                                   required>
+                            <p ng-show="ProfileForm.firstName.$invalid && !ProfileForm.firstName.$pristine"
+                               class="help-block">
+                                First Name is required.</p>
+                        </div>
                     </div>
-                    <div class="modal-body">
-
-                        <div class="row">
-                            <div ng-if="showProfileUpdateSuccessMessage">
-
-                                <div class="alert alert-success">
-                                    <strong>Success!</strong> Your Profile has successfully been updated
-                                </div>
-                            </div>
 
 
-                            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                                <form name="ProfileForm" ng-submit="updateProfile()" novalidate>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-6 col-md-6">
-                                            <div class="form-group"
-                                                 ng-class="{ 'has-error' : ProfileForm.firstName.$invalid && !ProfileForm.firstName.$pristine }">
-                                                <input type="text" name="firstName" placeholder="enter your firstName"
-                                                       ng-model="profile.firstName"
-                                                       class="form-control input-lg" required>
-                                                <p ng-show="ProfileForm.firstName.$invalid && !ProfileForm.firstName.$pristine"
-                                                   class="help-block">
-                                                    First Name is required.</p>
-                                            </div>
-                                        </div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : ProfileForm.lastName.$invalid && !ProfileForm.lastName.$pristine }">
+                        <label class="col-sm-2 control-label">Last Name111</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="lastName"
+                                   placeholder="enter your lastName"
+                                   ng-model="profile.lastName"
+                                   class="form-control input-lg"
+                                   required>
+                            <p ng-show="ProfileForm.lastName.$invalid && !ProfileForm.lastName.$pristine"
+                               class="help-block">Last
+                                Name is required.</p>
+                        </div>
+                    </div>
 
-                                        <div class="col-xs-12 col-sm-6 col-md-6">
-                                            <div class="form-group"
-                                                 ng-class="{ 'has-error' : ProfileForm.lastName.$invalid && !ProfileForm.lastName.$pristine }">
-                                                <input type="text" name="lastName" placeholder="enter your lastName"
-                                                       ng-model="profile.lastName"
-                                                       class="form-control input-lg" required>
-                                                <p ng-show="ProfileForm.lastName.$invalid && !ProfileForm.lastName.$pristine"
-                                                   class="help-block">Last
-                                                    Name is required.</p>
-                                            </div>
-                                        </div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : ProfileForm.companyName.$invalid && !ProfileForm.companyName.$pristine }">
+                        <label class="col-sm-2 control-label">Company Name</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="companyName"
+                                   placeholder="enter your company name"
+                                   ng-model="profile.companyName"
+                                   class="form-control input-lg"
+                                   required>
+                            <p ng-show="ProfileForm.companyName.$invalid && !ProfileForm.companyName.$pristine"
+                               class="help-block">Company Name is
+                                required.</p>
+                        </div>
+                    </div>
 
-                                        <div class="form-group"
-                                             ng-class="{ 'has-error' : ProfileForm.companyName.$invalid && !ProfileForm.companyName.$pristine }">
-                                            <input type="text" name="companyName" placeholder="enter your company name"
-                                                   ng-model="profile.companyName"
-                                                   class="form-control input-lg" required>
-                                            <p ng-show="ProfileForm.companyName.$invalid && !ProfileForm.companyName.$pristine"
-                                               class="help-block">Company Name is
-                                                required.</p>
-                                        </div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : ProfileForm.email.$invalid && !ProfileForm.email.$pristine }">
+                        <label class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email"
+                                   name="email"
+                                   placeholder="enter your email"
+                                   ng-model="profile.email"
+                                   class="form-control input-lg"
+                                   required>
+                            <p ng-show="ProfileForm.email.$invalid && !ProfileForm.email.$pristine"
+                               class="help-block">
+                                email is required.</p>
+                        </div>
+                    </div>
 
-                                        <div class="form-group"
-                                             ng-class="{ 'has-error' : ProfileForm.email.$invalid && !ProfileForm.email.$pristine }">
-                                            <input type="email" name="email" placeholder="enter your email"
-                                                   ng-model="profile.email"
-                                                   class="form-control input-lg"
-                                                   required>
-                                            <p ng-show="ProfileForm.email.$invalid && !ProfileForm.email.$pristine"
-                                               class="help-block">
-                                                email is required.</p>
-                                        </div>
-
-                                        <div class="form-group"
-                                             ng-class="{ 'has-error' : ProfileForm.phoneNumber.$invalid && !ProfileForm.phoneNumber.$pristine }">
-                                            <input type="text" name="phoneNumber" placeholder="enter your phone number"
-                                                   ng-model="profile.phone_number"
-                                                   class="form-control input-lg" required>
-                                            <p ng-show="ProfileForm.phoneNumber.$invalid && !ProfileForm.phoneNumber.$pristine"
-                                               class="help-block">phone number is
-                                                required.</p>
-                                        </div>
-                                        <button class='btn btn-primary' ng-disabled="$invalid" type="submit"> Update
-                                            Profile
-                                        </button>
-                                    </div>
-                                </form>
-
-
-                            </div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error' : ProfileForm.phoneNumber.$invalid && !ProfileForm.phoneNumber.$pristine }">
+                        <label class="col-sm-2 control-label">Phone Number</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="phoneNumber"
+                                   placeholder="enter your phone number"
+                                   ng-model="profile.phoneNumber"
+                                   class="form-control input-lg"
+                                   required>
+                            <p ng-show="ProfileForm.phoneNumber.$invalid && !ProfileForm.phoneNumber.$pristine"
+                               class="help-block">phone number is
+                                required.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Alternate Phone Number</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="alternatePhoneNumber"
+                                   placeholder="Alternate Phone Number"
+                                   ng-model="profile.alternatePhoneNumber"
+                                   class="form-control input-lg">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Apartment/Location Name</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="addressOne"
+                                   placeholder="Apartment/Location Name"
+                                   ng-model="profile.addressOne"
+                                   class="form-control input-lg">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Location</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="addressTwo"
+                                   placeholder="Location"
+                                   ng-model="profile.addressTwo"
+                                   class="form-control input-lg">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Landmark</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="street"
+                                   placeholder="Landmark"
+                                   ng-model="profile.street"
+                                   class="form-control input-lg">
                         </div>
 
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">City</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="city"
+                                   placeholder="City"
+                                   ng-model="profile.city"
+                                   class="form-control input-lg">
+                        </div>
 
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">District</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="district"
+                                   placeholder="District"
+                                   ng-model="profile.district"
+                                   class="form-control input-lg">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">State</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="state"
+                                   placeholder="State"
+                                   ng-model="profile.state"
+                                   class="form-control input-lg">
+                        </div>
+
+                    </div>
+
+
+
+                    <button class='btn btn-primary' ng-disabled="$invalid" type="submit"> Update
+                        Profile
+                    </button>
+                </form>
+
+
             </div>
         </div>
-
-
     </div>
-
-
 </div>

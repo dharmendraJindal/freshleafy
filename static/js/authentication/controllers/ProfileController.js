@@ -7,7 +7,14 @@ productapp.controller("ProfileController", ["$location", "$scope", "Authenticati
         firstName: "",
         lastName: "",
         email: "",
-        phone_number: "",
+        phoneNumber: "",
+        alternatePhoneNumber: "",
+        addressOne: "",
+        addressTwo: "",
+        street: "",
+        city: "",
+        district: "",
+        state: "",
         companyName: ""
     };
     $scope.profile = angular.copy(profile);
@@ -29,8 +36,18 @@ productapp.controller("ProfileController", ["$location", "$scope", "Authenticati
         $scope.profile.firstName = profileAPIData.first_name ;
         $scope.profile.lastName = profileAPIData.last_name;
         $scope.profile.email = profileAPIData.email;
-        $scope.profile.phone_number = profileAPIData.phonenumber;
-        $scope.profile.companyName = profileAPIData.company
+        $scope.profile.companyName = profileAPIData.company;
+        $scope.profile.phoneNumber = profileAPIData.phonenumber;
+        // $scope.profile.password = profileAPIData.password;
+
+        $scope.profile.alternetPhoneNumber = profileAPIData.phonenumber_two;
+        $scope.profile.addressOne = profileAPIData.address_one;
+        $scope.profile.addressTwo = profileAPIData.address_two;
+        $scope.profile.street = profileAPIData.street;
+        $scope.profile.city = profileAPIData.city;
+        $scope.profile.district = profileAPIData.district;
+        $scope.profile.state = profileAPIData.state;
+
 
     }
     

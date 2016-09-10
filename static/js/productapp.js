@@ -1,1 +1,1 @@
-var productapp = angular.module("ProductApp", ["ngRoute", "ngResource", "ngCookies", "ngCart"]);
+var productapp = angular.module("ProductApp", ["ngRoute", "ngResource", "ngCookies", "ngCart", "ngMessages"]);

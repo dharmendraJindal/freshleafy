@@ -116,7 +116,14 @@ productapp.factory("Authentication", ["$cookies", "$http", "$q", "$rootScope", f
             last_name: ProfileParams.lastName,
             company: ProfileParams.companyName,
             email: ProfileParams.email,
-            phonenumber: ProfileParams.phone_number
+            phonenumber: ProfileParams.phoneNumber,
+            phonenumber_two: ProfileParams.alternetPhoneNumber,
+            address_one : ProfileParams.addressOne,
+            address_two : ProfileParams.addressTwo,
+            street: ProfileParams.street,
+            city: ProfileParams.city,
+            district: ProfileParams.district,
+            state: ProfileParams.state
         };
         console.log(data);
         $http.put(url, data);

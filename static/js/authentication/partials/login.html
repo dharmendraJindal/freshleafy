@@ -3,16 +3,16 @@
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
             <h2>Login</h2>
             <div ng-show="inValidCredentials" class="alert alert-danger">
-                Invalid UserName or Password
+                Invalid Email or Password
             </div>
             <form name="LoginForm" ng-submit="login()" novalidate>
 
                 <div class="form-group"
                      ng-class="{ 'has-error' : LoginForm.username.$invalid && !LoginForm.username.$pristine }">
-                    <input name="username" type="text" placeholder="enter your username" ng-model="account.username"
+                    <input name="username" type="text" placeholder="enter your email" ng-model="account.username"
                            class="form-control" required>
                     <p ng-show="LoginForm.username.$invalid && !LoginForm.username.$pristine" class="help-block">
-                        username is required.</p>
+                        email is required.</p>
                 </div>
 
                 <div class="form-group"

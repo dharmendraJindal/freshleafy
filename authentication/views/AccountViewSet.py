@@ -90,8 +90,6 @@ class AccountViewSet(viewsets.ModelViewSet):
 
         # create user profile
 
-        print data
-
         address_one = data.get('address_one', None)
         address_two = data.get('address_two', None)
         street = data.get('street', None)
@@ -119,7 +117,6 @@ class AccountViewSet(viewsets.ModelViewSet):
         user_profile.company = company
 
         user_profile.save()
-
         data['username'] = email
 
         return data
