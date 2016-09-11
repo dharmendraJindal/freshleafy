@@ -35,9 +35,9 @@
                     <div class="col-md-12">
                         <ngcart-addtocart id="{{$index}}"
                                           name="{{ product.name }}"
+                                          unit="{{ product.unit }}"
                                           price="{{ product.price }}"
                                           quantity="1"
-                                          unit="{{ product.unit }}"
                                           quantityMax="5"
                                           >Add to Cart
                         </ngcart-addtocart>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="pull-right">
 
-                        <ngcart-checkout service="http" settings="settings="{ url:'127.0.0.1:8000/api/v1/product/userorder'}">Confirm Order</ngcart-checkout>
+                        <ngcart-checkout service="http">Confirm Order</ngcart-checkout>
                     </div>
                 </div>
             </div>
@@ -166,7 +166,7 @@
                     ng-options=" v for v in qtyOpt"></select>
         </span>
             <a class="btn btn-sm btn-primary"
-               ng-click="ngCart.addItem(id, name, price, q, data)"
+               ng-click="ngCart.addItem(id, name,unit,  price, q, data)"
                ng-transclude></a>
         </div>
         <mark ng-show="inCart()"><a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a>

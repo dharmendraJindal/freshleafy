@@ -14,10 +14,10 @@ angular.module('ngCart.directives', ['ngCart.fulfilment'])
             scope: {
                 id:'@',
                 name:'@',
+                unit : '@',
                 quantity:'@',
                 quantityMax:'@',
                 price:'@',
-                unit : '@',
                 data:'='
             },
             transclude: true,
