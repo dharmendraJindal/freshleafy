@@ -7,7 +7,11 @@ from product.serialisers.ProductCategorySerialiser import ProductCategorySeriali
 
 class ProductSerialiser(serializers.ModelSerializer):
     product_category = ProductCategorySerializer(many=True)
+    product_id = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
-        fields = ('name', 'image_path', 'grade','product_category', 'rate', 'unit')
+        fields = ('name', 'image_path', 'grade','product_category', 'rate', 'unit', 'product_id')
+
+    def get_product_id(self, obj):
+        return obj.id

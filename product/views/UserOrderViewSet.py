@@ -21,4 +21,5 @@ class UserOrderViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         print request.data
+        print "in create"
         return Response({}, status=status.HTTP_200_OK)

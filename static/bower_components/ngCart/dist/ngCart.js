@@ -513,7 +513,17 @@ angular.module('ngCart.fulfilment', [])
 .service('ngCart.fulfilment.http', ['$http', 'ngCart', function($http, ngCart){
 
         this.checkout = function(settings){
-            return $http.post(settings.url,
+
+            console.log(settings);
+
+            console.log('in checkout fn');
+
+
+            var postData = 'item_data='+JSON.stringify(ngCart['$cart']['items']);
+
+            console.log(postData, 'postdata');
+            console.log(ngCart.toObject(), 'ng cart object data');
+            return $http.post('/api/v1/product/userorder/',
                 { data: ngCart.toObject(), options: settings.options});
         }
  }])
