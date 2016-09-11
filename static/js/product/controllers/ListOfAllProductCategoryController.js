@@ -8,6 +8,7 @@ productapp.controller("ListOfAllProductCategoryController", ["$scope", "$rootSco
             category: '',
             grade: '',
             unit: '',
+            productID: '',
             quantity: 1
         };
 
@@ -22,6 +23,7 @@ productapp.controller("ListOfAllProductCategoryController", ["$scope", "$rootSco
                     prod.category = "Vegetable";
                     prod.grade = item.grade;
                     prod.unit = item.unit;
+                    prod.productID = item.product_id;
                     prod.imagePath = item.image_path;
 
                     $scope.products.push(prod);

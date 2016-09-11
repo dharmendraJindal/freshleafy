@@ -3,7 +3,7 @@ from django.db import models
 
 
 class UserOrder(models.Model):
-    user = models.OneToOneField(User)
+    user = models.ForeignKey(User)
     order_timestamp = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
