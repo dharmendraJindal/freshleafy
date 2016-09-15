@@ -126,6 +126,16 @@ body {
   margin-left: 20px;
 }
 
+.product {
+width: 250px;
+    height:370px;
+}
 
+.productImage {
+width:auto;
+height:auto;
+max-width:250px;
+max-height:170px;
+}
 
 

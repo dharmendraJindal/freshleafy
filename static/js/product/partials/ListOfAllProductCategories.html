@@ -27,20 +27,19 @@
     <div class="row text-center">
 
         <div class="col-md-3 col-sm-6 hero-feature" ng-repeat="product in products ">
-            <div class="thumbnail">
-                <img src="{{ product.imagePath }}" alt="">
+            <div class="thumbnail product">
+                <img class="productImage" src="{{ product.imagePath }}" alt="">
                 <div class="caption">
                     <h5>{{ product.name }}</h5>
                     <p>Rs {{ product.price }}/{{ product.unit }}</p>
-                    {{ product.productID }}
                     <div class="col-md-12">
                         <ngcart-addtocart id="{{$index}}"
                                           name="{{ product.name }}"
                                           unit="{{ product.unit }}"
-                                          productID="{{ product.productID }}"
+                                          product-iD="{{ product.productID }}"
                                           price="{{ product.price }}"
-                                          quantity="1"
-                                          quantityMax="5"
+                                          quantity="{{ product.quantity }}"
+                                          quantity-max="{{ product.quantityMax }}"
                                           >Add to Cart
                         </ngcart-addtocart>
                     </div>
@@ -69,7 +68,7 @@
                     </div>
                     <div class="pull-right">
 
-                        <ngcart-checkout service="http" settings="{ url:'127.0.0.1:8000/api/v1/product/userorder' }">Confirm Order</ngcart-checkout>
+                        <ngcart-checkout service="http" data-toggle="modal" data-target="#cartModal" settings="{ url:'127.0.0.1:8000/api/v1/product/userorder' }">Confirm Order</ngcart-checkout>
                     </div>
                 </div>
             </div>
@@ -86,7 +85,7 @@
         <p>
         <div class="col-xs-4">{{ ngCart.getTotalItems() }}
             <ng-pluralize count="ngCart.getTotalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize>
-            <br/>{{ ngCart.totalCost() | currency }}
+            <br/>{{ ngCart.totalCost() | currency:'&#8377;' }}
         </div>
         </p>
     </div>
@@ -118,21 +117,21 @@
                 <td></td>
                 <td></td>
                 <td>Tax ({{ ngCart.getTaxRate() }}%):</td>
-                <td>{{ ngCart.getTax() | currency }}</td>
+                <td>{{ ngCart.getTax() | currency:'&#8377;' }}</td>
             </tr>
             <tr ng-show="ngCart.getShipping()">
                 <td></td>
                 <td></td>
                 <td></td>
                 <td>Shipping:</td>
-                <td>{{ ngCart.getShipping() | currency }}</td>
+                <td>{{ ngCart.getShipping() | currency:'&#8377;' }}</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td>Total:</td>
-                <td>{{ ngCart.totalCost() | currency }}</td>
+                <td>{{ ngCart.totalCost() | currency:'&#8377;' }}</td>
             </tr>
             </tfoot>
             <tbody>
@@ -146,8 +145,8 @@
                     {{ item.getQuantity() | number }}&nbsp;&nbsp;
                     <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span></td>
                 <td>{{ item.getUnit()}}</td>
-                <td>{{ item.getPrice() | currency}}</td>
-                <td>{{ item.getTotal() | currency }}</td>
+                <td>{{ item.getPrice() | currency:'&#8377;'}}</td>
+                <td>{{ item.getTotal() | currency:'&#8377;' }}</td>
             </tr>
             </tbody>
         </table>
@@ -172,7 +171,7 @@
                ng-click="ngCart.addItem(id, name, unit, 1, price, q, data)"
                ng-transclude></a>
         </div>
-        <mark ng-show="inCart()"><a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove {{ productID }}{{ unit }}{{ name }}</a>
+        <mark ng-show="false"><a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove {{ productID }}{{ unit }}{{ name }}</a>
         </mark>
     </div>
 </script>

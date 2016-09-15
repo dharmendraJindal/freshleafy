@@ -9,7 +9,8 @@ productapp.controller("ListOfAllProductCategoryController", ["$scope", "$rootSco
             grade: '',
             unit: '',
             productID: '',
-            quantity: 1
+            quantity: 1,
+            quantityMax:20
         };
 
         $scope.products = [];
