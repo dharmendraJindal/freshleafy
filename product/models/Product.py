@@ -10,6 +10,7 @@ class Product(models.Model):
     image_path = models.CharField(max_length=500, null=True, blank=True)
     rate = models.CharField(max_length=200, default=1)
     unit = models.CharField(max_length=200, default='Kg')
+    is_active = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.name

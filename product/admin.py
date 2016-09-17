@@ -14,7 +14,7 @@ admin.site.register(ProductCategory, ProductCategoryAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'grade', 'image_path', 'rate', 'unit')
+    list_display = ('name', 'grade', 'image_path', 'rate', 'unit','is_active')
     list_filter = ["name", "grade", 'unit']
 
 
@@ -22,7 +22,8 @@ admin.site.register(Product, ProductAdmin)
 
 
 class OrderedProductAdmin(admin.ModelAdmin):
-    list_display = ('product', 'user_order', 'rate', 'quantity', 'unit')
+    list_display = ('product', 'user_name','user_email',  'order_timestamp', 'rate', 'quantity', 'unit')
+    list_filter = ['product', 'user_order__order_timestamp']
 
 
 admin.site.register(OrderedProduct, OrderedProductAdmin)

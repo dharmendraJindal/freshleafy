@@ -1,6 +1,6 @@
 productapp.controller("ListOfAllProductCategoryController", ["$scope", "$rootScope", "$location",
-    "Authentication", "ProductService",  "ngCart","$rootScope",
-    function ($scope, $rootScope, $location, Authentication, ProductService, ngCart) {
+    "Authentication", "ProductService",  "ngCart","ProductCategoryService",
+    function ($scope, $rootScope, $location, Authentication, ProductService, ngCart, ProductCategoryService) {
 
         var product = {
             name: '',
@@ -14,6 +14,20 @@ productapp.controller("ListOfAllProductCategoryController", ["$scope", "$rootSco
         };
 
         $scope.products = [];
+
+
+
+
+        var getProductCategories = function () {
+            ProductCategoryService.getProductCategories().then(function (data) {
+                $scope.productCategories = data;
+                console.log(data, 'data');
+            }, function () {
+
+            });
+        };
+        getProductCategories();
+
 
         var getProducts = function () {
             ProductService.getProducts().then(function (data) {

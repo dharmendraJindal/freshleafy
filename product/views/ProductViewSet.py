@@ -9,7 +9,7 @@ from product.serialisers.ProductSerialiser import ProductSerialiser
 
 class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly,)
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(is_active=True)
     serializer_class = ProductSerialiser
 
     def list(self, request, *args, **kwargs):

@@ -26,7 +26,7 @@
     <!-- Product content to buy -->
     <div class="row text-center">
 
-        <div class="col-md-3 col-sm-6 hero-feature" ng-repeat="product in products ">
+        <div class="col-md-3 col-sm-6 hero-feature" ng-repeat="product in products">
             <div class="thumbnail product">
                 <img class="productImage" src="{{ product.imagePath }}" alt="">
                 <div class="caption">
@@ -40,7 +40,7 @@
                                           price="{{ product.price }}"
                                           quantity="{{ product.quantity }}"
                                           quantity-max="{{ product.quantityMax }}"
-                                          >Add to Cart
+                        >Add to Cart
                         </ngcart-addtocart>
                     </div>
                 </div>
@@ -68,7 +68,9 @@
                     </div>
                     <div class="pull-right">
 
-                        <ngcart-checkout service="http" data-toggle="modal" data-target="#cartModal" settings="{ url:'127.0.0.1:8000/api/v1/product/userorder' }">Confirm Order</ngcart-checkout>
+                        <ngcart-checkout service="http" data-toggle="modal" data-target="#cartModal"
+                                         settings="{ url:'127.0.0.1:8000/api/v1/product/userorder' }">Confirm Order
+                        </ngcart-checkout>
                     </div>
                 </div>
             </div>
@@ -171,7 +173,8 @@
                ng-click="ngCart.addItem(id, name, unit, 1, price, q, data)"
                ng-transclude></a>
         </div>
-        <mark ng-show="false"><a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove {{ productID }}{{ unit }}{{ name }}</a>
+        <mark ng-show="false"><a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove
+            {{ productID }}{{ unit }}{{ name }}</a>
         </mark>
     </div>
 </script>

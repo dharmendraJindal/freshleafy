@@ -10,6 +10,17 @@ class OrderedProduct(models.Model):
     unit = models.CharField(max_length=200)
     quantity = models.CharField(max_length=200)
 
+    def order_timestamp(self):
+        return self.user_order.order_timestamp
+
+    def user_email(self):
+        return self.user_order.user.email
+
+    def user_name(self):
+        return self.user_order.user.first_name + ' '+ self.user_order.user.last_name
+
+
+
 
 
 
