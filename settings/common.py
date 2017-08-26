@@ -112,7 +112,7 @@ COMPRESS_ROOT = "static/CACHE"
 # C0MPRESS_ROOT = PROJECT_ROOT + 'static/CACHE/'
 MEDIA_ROOT = 'static/media'
 
-# STATIC_ROOT = PROJECT_ROOT + "static/"
+STATIC_ROOT = PROJECT_ROOT + "static/"
 
 MEDIA_URL = STATIC_URL + "media/"
 # MEDIA_ROOT = PROJECT_ROOT + 'static/media/'
