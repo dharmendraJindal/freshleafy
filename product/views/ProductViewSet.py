@@ -32,7 +32,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             {
                 "name": "Dhaniya",
                 "hindi_name": "धनिया",
-                "image_path": "/static/product_images/coriander___dhania.jpg",
+                "image_path": "/static/product_images/coriander_dhania.jpg",
                 "quantity_types": [
                     1,5, 10,50,100
                 ],
@@ -43,7 +43,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             {
                 "name": "Guava",
                 "hindi_name": "अमरुद",
-                "image_path": "/static/product_images/guava___peru_500_gm.jpg",
+                "image_path": "/static/product_images/guava_peru_500_gm.jpg",
                 "quantity_types": [
                     1,5, 10,50,100
                 ],
@@ -65,7 +65,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             {
                 "name": "Kakdi",
                 "hindi_name": "ककड़ी",
-                "image_path": "/static/product_images/cucumber___kakdi_500.jpg",
+                "image_path": "/static/product_images/cucumber_kakdi_500.jpg",
                 "grade": "A",
                 "quantity_types": [
                     1,5, 10,50,100
