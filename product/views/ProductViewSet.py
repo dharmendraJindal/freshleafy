@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -22,4 +25,65 @@ class ProductViewSet(viewsets.ModelViewSet):
                 print "Product Category Not Found, Sending All Products"
                 pass
         serializer = self.serializer_class(self.queryset, many=True)
-        return Response(serializer.data)
+        return Response(self.dummy_data())
+
+    def dummy_data(self):
+        return [
+            {
+                "name": "Dhaniya",
+                "hindi_name": "धनिया",
+                "image_path": "/static/product_images/coriander___dhania.jpg",
+                "quantity_types": [
+                    1,5, 10,50,100
+                ],
+                "rate": "50",
+                "unit": "Kg",
+                "product_id": 1
+            },
+            {
+                "name": "Guava",
+                "hindi_name": "अमरुद",
+                "image_path": "/static/product_images/guava___peru_500_gm.jpg",
+                "quantity_types": [
+                    1,5, 10,50,100
+                ],
+                "rate": "80",
+                "unit": "Kg",
+                "product_id": 2
+            },
+            {
+                "name": "Tomato",
+                "hindi_name": "टमाटर",
+                "image_path": "/static/product_images/cherry_tomato_250_gm.jpg",
+                "quantity_types": [
+                    1,5, 10,50,100
+                ],
+                "rate": "150",
+                "unit": "Kg",
+                "product_id": 3
+            },
+            {
+                "name": "Kakdi",
+                "hindi_name": "ककड़ी",
+                "image_path": "/static/product_images/cucumber___kakdi_500.jpg",
+                "grade": "A",
+                "quantity_types": [
+                    1,5, 10,50,100
+                ],
+                "rate": "30",
+                "unit": "Kg",
+                "product_id": 4
+            },
+            {
+                "name": "Mango",
+                "hindi_name": "आम",
+                "image_path": "/static/product_images/mango_totapuri.jpg",
+                "grade": "A",
+                "quantity_types": [
+                    1,5, 10,50,100
+                ],
+                "rate": "250",
+                "unit": "Kg",
+                "product_id": 4
+            }
+        ]
