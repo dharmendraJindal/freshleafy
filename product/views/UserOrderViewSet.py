@@ -9,16 +9,17 @@ from product.serialisers.OrderedProductSerialiser import OrderedProductSerialise
 
 
 class UserOrderViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    # permission_classes = (IsAuthenticatedOrReadOnly,)
     all_orders = UserOrder.objects.all()
     serializer_class = OrderedProductSerialiser
 
     def list(self, request, *args, **kwargs):
-        user = request.user
-        user_orders = self.all_orders.filter(user=user)
-        queryset = OrderedProduct.objects.filter(user_order__in=user_orders)
-        serializer = self.serializer_class(queryset, many=True)
-        return Response(serializer.data)
+        # user = request.user
+        # user_orders = self.all_orders.filter(user=user)
+        # queryset = OrderedProduct.objects.filter(user_order__in=user_orders)
+        # serializer = self.serializer_class(queryset, many=True)
+        # return Response(serializer.data)
+        return Response(self.dummy_data())
 
     def create(self, request, *args, **kwargs):
         ordered_products_data = request.data
@@ -40,3 +41,22 @@ class UserOrderViewSet(viewsets.ModelViewSet):
         except Exception as ex:
             print ex
         return Response({}, status=status.HTTP_200_OK)
+
+    def dummy_data(self):
+        return [
+            {
+                "date_time": "Sunday 3 sep 17, 4 AM",
+                "total_quantity": 3,
+                "total_price": 1072,
+             },
+            {
+                "date_time": "Sunday 5 sep 17, 01 PM",
+                "total_quantity": 3,
+                "total_price": 1072,
+            },
+            {
+                "date_time": "Sunday 9 sep 17, 09:30 PM",
+                "total_quantity": 3,
+                "total_price": 1072,
+            }
+        ]
