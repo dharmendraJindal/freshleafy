@@ -1,10 +1,11 @@
+from django.contrib.auth.models import User
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
-from django.contrib.auth.models import User
-from product.models import UserOrder
-from product.models import Product
+
 from product.models import OrderedProduct
+from product.models import Product
+from product.models import UserOrder
 from product.serialisers.OrderedProductSerialiser import OrderedProductSerialiser
 
 
@@ -50,30 +51,29 @@ class UserOrderViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         ordered_products_data = request.data
 
+        print ordered_products_data
+
         try:
-            print ordered_products_data, "======="
             user_order = UserOrder(user=User.objects.get(username="webadmin"))
             user_order.save()
-            self.create_post_order_data(user_order)
+            self.create_post_order_data(user_order, ordered_products_data)
 
 
         except Exception as ex:
             print ex
         return Response({}, status=status.HTTP_200_OK)
 
-    def create_post_order_data(self, user_order):
-        ordered_products_data = Product.objects.all()[:3]
+    def create_post_order_data(self, user_order, ordered_products_data):
         for product in ordered_products_data:
-            unit = product.unit
-            name = product.name
-            rate = product.rate
-            quantity = 10
+            product_obj = Product.objects.get(id=product.get("product_id"))
 
-            product = Product.objects.get(name=name)
-            ordered_product = OrderedProduct(user_order=user_order, product=product, rate=rate, quantity=quantity,
+            unit = product_obj.unit
+            rate = product_obj.rate
+            quantity = product.get("quantity")
+            ordered_product = OrderedProduct(user_order=user_order, product=product_obj, rate=rate, quantity=quantity,
                                              unit=unit)
             ordered_product.save()
-            print "Order succseefully saved"
+            print "Order successfully saved"
         return
 
     def dummy_data(self):
