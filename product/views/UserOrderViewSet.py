@@ -55,7 +55,7 @@ class UserOrderViewSet(viewsets.ModelViewSet):
 
     def create_post_order_data(self, user_order, ordered_products_data):
         for product in ordered_products_data:
-            product_obj = Product.objects.get(id=product.get("product_id"))
+            product_obj = Product.objects.get(id=int(product.get("product_id")))
 
             unit = product_obj.unit
             rate = product_obj.rate
