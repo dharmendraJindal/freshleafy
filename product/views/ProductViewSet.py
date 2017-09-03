@@ -25,9 +25,14 @@ class ProductViewSet(viewsets.ModelViewSet):
                 print "Product Category Not Found, Sending All Products"
                 pass
         serializer = self.serializer_class(self.queryset, many=True)
-        return Response(self.dummy_data())
+        return Response(serializer.data)
 
     def dummy_data(self):
+        data = {
+            "name":"some_name",
+            "pass":"some_pass",
+            "email":"some_email",
+        }
         return [
             {
                 "name": "Dhaniya",
