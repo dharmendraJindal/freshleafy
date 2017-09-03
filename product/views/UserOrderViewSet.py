@@ -2,12 +2,12 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
+import ast
 
 from product.models import OrderedProduct
 from product.models import Product
 from product.models import UserOrder
 from product.serialisers.OrderedProductSerialiser import OrderedProductSerialiser
-import json
 
 
 class UserOrderViewSet(viewsets.ModelViewSet):
@@ -42,7 +42,7 @@ class UserOrderViewSet(viewsets.ModelViewSet):
         return orders
 
     def create(self, request, *args, **kwargs):
-        request_data = json.loads(request.data)
+        request_data = ast.literal_eval(request.data)
         ordered_products_data = request_data.get("data")
 
         try:
