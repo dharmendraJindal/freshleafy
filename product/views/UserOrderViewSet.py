@@ -7,6 +7,7 @@ from product.models import OrderedProduct
 from product.models import Product
 from product.models import UserOrder
 from product.serialisers.OrderedProductSerialiser import OrderedProductSerialiser
+import json
 
 
 class UserOrderViewSet(viewsets.ModelViewSet):
@@ -41,7 +42,8 @@ class UserOrderViewSet(viewsets.ModelViewSet):
         return orders
 
     def create(self, request, *args, **kwargs):
-        ordered_products_data = request.data.get("data")
+        request_data = json.loads(request.data)
+        ordered_products_data = request_data.get("data")
 
         try:
             user_order = UserOrder(user=User.objects.get(username="webadmin"))
