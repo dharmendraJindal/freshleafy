@@ -15,24 +15,16 @@ class UserOrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderedProductSerialiser
 
     def list(self, request, *args, **kwargs):
-        # user = request.user
         user = User.objects.get(username="webadmin")
         user_orders = self.all_orders.filter(user=user)
         data = self.get_order_user_order_by(user_orders)
-
-        # OrderedProduct.objects.all().delete()
-        # UserOrder.objects.all().delete()
-        # queryset = OrderedProduct.objects.filter(user_order__in=user_orders)
-        # serializer = self.serializer_class(queryset, many=True)
-        # return Response(serializer.data)
-        # return Response(self.dummy_data())
         return Response(data)
 
     def get_order_user_order_by(self, user_orders):
         orders = []
 
         for order in user_orders:
-            ordered_products = OrderedProduct.objects.filter(user_order=user_orders)
+            ordered_products = OrderedProduct.objects.filter(user_order=order)
 
             total_price = 0
             total_quantity = 0
@@ -59,7 +51,7 @@ class UserOrderViewSet(viewsets.ModelViewSet):
 
         except Exception as ex:
             print ex
-        return Response({}, status=status.HTTP_200_OK)
+        return Response({"total item ordered", str(len(ordered_products_data))}, status=status.HTTP_200_OK)
 
     def create_post_order_data(self, user_order, ordered_products_data):
         for product in ordered_products_data:
