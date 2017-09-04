@@ -37,6 +37,7 @@ class UserOrderViewSet(viewsets.ModelViewSet):
                     "rate": ordered_product.rate,
                     "quantity": ordered_product.quantity,
                     "image_path": ordered_product.product.image_path,
+                    "unit": ordered_product.unit,
                     "name": ordered_product.product.name,
                     "hindi_name": ordered_product.product.name,
                 }
