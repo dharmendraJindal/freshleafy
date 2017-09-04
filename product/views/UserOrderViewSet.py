@@ -67,7 +67,7 @@ class UserOrderViewSet(viewsets.ModelViewSet):
 
         except Exception as ex:
             print ex
-        return Response({"total item ordered", str(len(ordered_products_data))}, status=status.HTTP_200_OK)
+        return Response(request.data)
 
     def create_post_order_data(self, user_order, ordered_products_data):
         for product in ordered_products_data:
