@@ -57,7 +57,7 @@ class UserOrderViewSet(viewsets.ModelViewSet):
         request_data = request.data
 
         # ordered_products_data = request_data.get("data")
-        ordered_products_data = []
+        ordered_products_data = request.data
 
         try:
             user_order = UserOrder(user=User.objects.get(username="webadmin"))
