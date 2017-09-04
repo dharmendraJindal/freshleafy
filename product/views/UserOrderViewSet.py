@@ -29,20 +29,30 @@ class UserOrderViewSet(viewsets.ModelViewSet):
 
             total_price = 0
             total_quantity = 0
+            products = []
             for ordered_product in ordered_products:
                 total_price += int(ordered_product.rate)
                 total_quantity += int(ordered_product.quantity)
+                product_data = {
+                    "rate": ordered_product.rate,
+                    "quantity": ordered_product.quantity,
+                    "image_path": ordered_product.product.image_path,
+                    "name": ordered_product.product.name,
+                    "hindi_name": ordered_product.product.name,
+                }
+                products.append(product_data)
 
             order_dict = {
                 "total_price": total_price,
                 "total_quantity": total_quantity,
                 "date_time": order.order_timestamp.strftime("%b %d %H:%M:%S"),
+                "products": products
             }
             orders.append(order_dict)
         return orders
 
     def create(self, request, *args, **kwargs):
-        request_data = ast.literal_eval(request.data)
+        request_data = request.data
         ordered_products_data = request_data.get("data")
 
         try:
