@@ -31,7 +31,8 @@ class UserOrderViewSet(viewsets.ModelViewSet):
             total_quantity = 0
             products = []
             for ordered_product in ordered_products:
-                total_price += int(ordered_product.rate)
+                total_price_of_product = int(ordered_product.rate) * int(ordered_product.quantity)
+                total_price += total_price_of_product
                 total_quantity += int(ordered_product.quantity)
                 product_data = {
                     "rate": ordered_product.rate,
