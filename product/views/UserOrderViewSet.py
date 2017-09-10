@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets, status
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 import ast
 
@@ -11,7 +11,7 @@ from product.serialisers.OrderedProductSerialiser import OrderedProductSerialise
 
 
 class UserOrderViewSet(viewsets.ModelViewSet):
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (AllowAny,)
     all_orders = UserOrder.objects.all()
     serializer_class = OrderedProductSerialiser
 

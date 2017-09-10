@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 from product.models import Product
@@ -11,7 +11,7 @@ from product.serialisers.ProductSerialiser import ProductSerialiser
 
 
 class ProductViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (AllowAny,)
     queryset = Product.objects.filter(is_active=True)
     serializer_class = ProductSerialiser
 

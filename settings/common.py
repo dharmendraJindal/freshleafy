@@ -1,6 +1,5 @@
 import os
 
-
 # =============================================================================
 # Which WEB_ENV?
 # =============================================================================
@@ -37,7 +36,6 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ALLOWED_HOSTS = ["*"]
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -47,12 +45,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oauth2_provider',
     'compressor',
     'rest_framework',
     'django_extensions',
     'product',
     'authentication',
-'rest_framework.authtoken'
+    'rest_framework.authtoken',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -65,6 +64,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

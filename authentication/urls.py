@@ -1,4 +1,5 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
+from rest_framework.authtoken import views
 
 from rest_framework import routers
 from authentication.views.AccountViewSet import AccountViewSet
@@ -15,8 +16,9 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
     url(r'^checkuserexist/$', CheckUserExistView.as_view(), name='check_user_exist'),
+    url(r'^token/', views.obtain_auth_token),
+    url(r'^o/', include("oauth2_provider.urls", namespace="oauth2_provider")),
 ]
 
 urlpatterns += router.urls
-
 
