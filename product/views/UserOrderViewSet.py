@@ -11,12 +11,12 @@ from product.serialisers.OrderedProductSerialiser import OrderedProductSerialise
 
 
 class UserOrderViewSet(viewsets.ModelViewSet):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
     all_orders = UserOrder.objects.all()
     serializer_class = OrderedProductSerialiser
 
     def list(self, request, *args, **kwargs):
-        user = User.objects.get(username="webadmin")
+        user = User.objects.get(username=request.user)
         user_orders = self.all_orders.filter(user=user)
         data = self.get_order_user_order_by(user_orders)
         return Response(data)
