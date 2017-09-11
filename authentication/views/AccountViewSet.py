@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import status, viewsets
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from authentication.models import UserProfile
 from authentication.serializers.UserProfileSerializer import UserProfileSerializer
@@ -8,6 +9,8 @@ from authentication.serializers.UserSerializer import UserSerializer
 
 
 class AccountViewSet(viewsets.ModelViewSet):
+    permission_classes = (AllowAny,)
+
     lookup_field = 'id'
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -51,6 +54,8 @@ class AccountViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         data = request.data
+
+        print data
         if data:
             created_data = self.create_or_update_profile(data, None)
             return Response(created_data, status=status.HTTP_201_CREATED)
@@ -71,6 +76,8 @@ class AccountViewSet(viewsets.ModelViewSet):
         }, status=status.HTTP_400_BAD_REQUEST)
 
     def create_or_update_profile(self, data, user_id):
+
+        print data, "============="
         if not user_id:
 
             email = data.get('email', None)
@@ -117,6 +124,4 @@ class AccountViewSet(viewsets.ModelViewSet):
         user_profile.company = company
 
         user_profile.save()
-        data['username'] = email
-
         return data
