@@ -60,7 +60,7 @@ class UserOrderViewSet(viewsets.ModelViewSet):
         ordered_products_data = request.data
 
         try:
-            user_order = UserOrder(user=User.objects.get(username="webadmin"))
+            user_order = UserOrder(user=request.user)
             user_order.save()
             self.create_post_order_data(user_order, ordered_products_data)
 
@@ -81,22 +81,3 @@ class UserOrderViewSet(viewsets.ModelViewSet):
             ordered_product.save()
             print "Order successfully saved"
         return
-
-    def dummy_data(self):
-        return [
-            {
-                "date_time": "Sunday 3 sep 17, 4 AM",
-                "total_quantity": 3,
-                "total_price": 1072,
-            },
-            {
-                "date_time": "Sunday 5 sep 17, 01 PM",
-                "total_quantity": 3,
-                "total_price": 1072,
-            },
-            {
-                "date_time": "Sunday 9 sep 17, 09:30 PM",
-                "total_quantity": 3,
-                "total_price": 1072,
-            }
-        ]
