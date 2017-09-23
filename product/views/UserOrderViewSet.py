@@ -3,6 +3,8 @@ from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 import ast
+from datetime import datetime
+import pytz
 
 from product.models import OrderedProduct
 from product.models import Product
@@ -44,14 +46,19 @@ class UserOrderViewSet(viewsets.ModelViewSet):
                 }
                 products.append(product_data)
 
+            order_datetime = self.convert_to_local_timezone(order.order_timestamp)
+
             order_dict = {
                 "total_price": total_price,
                 "total_quantity": total_quantity,
-                "date_time": order.order_timestamp.strftime("%b %d %H:%M:%S"),
+                "date_time": order_datetime.strftime("%b %d %H:%M %p"),
                 "products": products
             }
             orders.append(order_dict)
         return orders
+
+    def convert_to_local_timezone(self, date_time):
+        return date_time.replace(tzinfo=pytz.utc).astimezone(pytz.timezone("Asia/Kolkata"))
 
     def create(self, request, *args, **kwargs):
         request_data = request.data
