@@ -23,4 +23,7 @@ class ProductSerialiser(serializers.ModelSerializer):
         return obj.name
 
     def get_quantity_intervals(self, obj):
-        return [1,5,10,25,50]
+        return {
+            "pack_sizes": ["100 gm", "200 gm", "500 gm", "1 Kg", "5 Kg"],
+            "rates": [30, 60, 100, 150, 200]
+        }
