@@ -1,10 +1,10 @@
+import ast
+import pytz
+from datetime import datetime
 from django.contrib.auth.models import User
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
-import ast
-from datetime import datetime
-import pytz
 
 from product.models import OrderedProduct
 from product.models import Product
@@ -33,11 +33,15 @@ class UserOrderViewSet(viewsets.ModelViewSet):
             total_quantity = 0
             products = []
             for ordered_product in ordered_products:
-                total_price_of_product = int(ordered_product.rate) * int(ordered_product.quantity)
+                total_price_of_product = 30 * int(ordered_product.quantity)
                 total_price += total_price_of_product
                 total_quantity += int(ordered_product.quantity)
                 product_data = {
                     "rate": ordered_product.rate,
+                    "quantity_intervals": {
+                        "pack_size_types": ["100 gm", "200 gm", "500 gm", "1 Kg", "5 Kg"],
+                        "pack_size_rates": [30, 60, 100, 150, 200]
+                    },
                     "quantity": ordered_product.quantity,
                     "image_path": ordered_product.product.image_path,
                     "unit": ordered_product.unit,
