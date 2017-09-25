@@ -119,6 +119,9 @@ COMPRESS_ROOT = "static/CACHE"
 # C0MPRESS_ROOT = PROJECT_ROOT + 'static/CACHE/'
 MEDIA_ROOT = 'static/media'
 
+# HOST = "webadmin@172.104.177.182"
+# pass = "ERjitendra"
+
 STATIC_ROOT = PROJECT_ROOT + "assets/"
 
 MEDIA_URL = STATIC_URL + "media/"
