@@ -5,7 +5,7 @@ env.user = "webadmin"
 env.hosts = ["172.104.177.182"]
 
 def deploy():
-    print "DEPLOYING============******************************************"
+    print "DEPLOYING ============******************************************"
     with cd('public/jindalfresh/freshleafy'):
         with_virtualenv()
         run("git pull")
