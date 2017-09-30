@@ -1,4 +1,5 @@
 from django.core.mail import send_mail
+from base.APPConstants import AppConstants
 
 
 class EmailUtility():

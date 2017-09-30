@@ -56,6 +56,10 @@ DATABASES = {
 
 
 #======== DJANGO Settings =====================
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = "1"
 SECRET_KEY = "68h(iy4+r@y2rh-t+*#s_-p1z%kfgdfe%$$#%nqf6lzw(9bh^&"
