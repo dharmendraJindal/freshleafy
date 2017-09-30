@@ -18,3 +18,7 @@ sudo supervisorctl update
 Static file notes *** to Understand how static file works inn django **
 
 http://agiliq.com/blog/2013/03/serving-static-files-in-django/
+
+
+fab file
+https://micropyramid.com/blog/automate-django-deployments-with-fabfile/
