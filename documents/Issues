@@ -22,3 +22,17 @@ http://agiliq.com/blog/2013/03/serving-static-files-in-django/
 
 fab file
 https://micropyramid.com/blog/automate-django-deployments-with-fabfile/
+
+
+MYSQL Django
+
+https://stackoverflow.com/questions/7475223/mysql-config-not-found-when-installing-mysqldb-python-interface
+
+sudo apt-get install libmysqlclient-dev
+
+pip install MySQL-python==1.2.5
+
+MYSQL workbench
+https://askubuntu.com/questions/45115/how-to-install-mysql-workbench
+https://www.linode.com/docs/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu
+

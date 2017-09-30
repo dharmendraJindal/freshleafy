@@ -3,17 +3,20 @@ from manage import PROJECT_ROOT
 
 from fabric.api import env, run
 
-FAB_ENVIRONMENTS = env
-
 #=============== ENV Settings=================
 
-WEB_ENV = 'dev'
+WEB_ENV = os.environ['WEB_ENV']
 
 if WEB_ENV == "dev":
+    MYSQL_HOST = "172.104.177.182"
+    MYSQL_DB_PASS = "jsERjitendra"
     print "Your env is [DEV]"
 
 else:
+    MYSQL_HOST = "localhost"
+    MYSQL_DB_PASS = "punejune1@"
     print "Your env is [LOCAL]"
+
 
 #=============== Apps=================
 
@@ -29,11 +32,27 @@ INSTALLED_APPS = (
     'rest_framework',
     'django_extensions',
     'product',
+    'base',
     'authentication',
     'rest_framework.authtoken',
 )
 
 #======================================
+
+#=============MYSQL====================
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'js_db',
+        'USER': 'js_admin',
+        'PASSWORD': MYSQL_DB_PASS,
+        'HOST': MYSQL_HOST,   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+
+#=======================================
 
 
 #======== DJANGO Settings =====================
@@ -67,13 +86,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     )
-}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'db.sqlite3'),
-    }
 }
 
 STATICFILES_FINDERS = (

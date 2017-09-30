@@ -28,6 +28,7 @@ idna==2.6
 image==1.5.12
 ipaddress==1.0.18
 ipython==3.2.1
+MySQL-python==1.2.5
 oauthlib==1.0.1
 olefile==0.44
 paramiko==1.15.2
