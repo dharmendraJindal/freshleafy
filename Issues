@@ -9,3 +9,8 @@ bashrc
 
 
 gunicorn freshleafy.wsgi:application --bind example.com:8001
+
+
+sudo supervisorctl reread
+
+sudo supervisorctl update
