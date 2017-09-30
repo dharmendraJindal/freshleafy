@@ -84,17 +84,9 @@ DATABASES = {
         'NAME': os.path.join(PROJECT_ROOT, 'db.sqlite3'),
     }
 }
-# Connect to MongoDB
-
-# connect('leave_test_db', host='localhost', port=27017,
-#         alias='default')
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
 LANGUAGE_CODE = 'en-us'

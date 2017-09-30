@@ -14,3 +14,7 @@ gunicorn freshleafy.wsgi:application --bind example.com:8001
 sudo supervisorctl reread
 
 sudo supervisorctl update
+
+Static file notes *** to Understand how static file works inn django **
+
+http://agiliq.com/blog/2013/03/serving-static-files-in-django/
