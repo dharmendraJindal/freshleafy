@@ -1,42 +1,21 @@
 import os
-
-# =============================================================================
-# Which WEB_ENV?
-# =============================================================================
-# Valid options - local, dev, qa, prod
 from manage import PROJECT_ROOT
 
-WEB_ENV = 'local'
+from fabric.api import env, run
 
-# Branch and version number
-# BRANCH = 'master'
-# VERSION = 'v0.0.0'
-DEBUG = True
-SITE_ID = "1"
-SECRET_KEY = "68h(iy4+r@y2rh-t+*#s_-p1z%kfgdfe%$$#%nqf6lzw(9bh^&"
-# =============================================================================
-# PATHS
-# =============================================================================
-# Full filesystem path to the project.
-# based on common.py is in <PROJECT_ROOT>/settings
+FAB_ENVIRONMENTS = env
 
-# Name of the directory for the project.
-PROJECT_DIRNAME = PROJECT_ROOT
+#=============== ENV Settings=================
 
-# Package/module name to import the root urlpatterns from for the project.
-# ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
-ROOT_URLCONF = "settings.urls"
+WEB_ENV = 'dev'
 
-# Put strings here, like "/home/html/django_templates"
-# or "C:/www/django/templates".
-# Always use forward slashes, even on Windows.
-# Don't forget to use absolute paths, not relative paths.
-TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
+if WEB_ENV == "dev":
+    print "Your env is [DEV]"
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-ALLOWED_HOSTS = ["*"]
+else:
+    print "Your env is [LOCAL]"
 
-# Application definition
+#=============== Apps=================
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -53,6 +32,23 @@ INSTALLED_APPS = (
     'authentication',
     'rest_framework.authtoken',
 )
+
+#======================================
+
+
+#======== DJANGO Settings =====================
+
+SITE_ID = "1"
+SECRET_KEY = "68h(iy4+r@y2rh-t+*#s_-p1z%kfgdfe%$$#%nqf6lzw(9bh^&"
+
+PROJECT_DIRNAME = PROJECT_ROOT
+
+ROOT_URLCONF = "settings.urls"
+
+TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+ALLOWED_HOSTS = ["*"]
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -73,11 +69,6 @@ REST_FRAMEWORK = {
     )
 }
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-# create database app_db;
-# grant all on app_db.* to 'app_admin' identified by 'App_admin123';
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -97,32 +88,25 @@ USE_I18N = True
 
 USE_L10N = True
 
-# USE_TZ = True
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
-# This fucking thing keeps on irritating but now it wont
+
 STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static"),)
 STATIC_URL = '/static/'
 
 COMPRESS_ROOT = "static/CACHE"
-# C0MPRESS_ROOT = PROJECT_ROOT + 'static/CACHE/'
-MEDIA_ROOT = 'static/media'
 
-# HOST = "webadmin@172.104.177.182"
-# pass = "ERjitendra"
+MEDIA_ROOT = 'static/media'
 
 STATIC_ROOT = PROJECT_ROOT + "assets/"
 
 MEDIA_URL = STATIC_URL + "media/"
-# MEDIA_ROOT = PROJECT_ROOT + 'static/media/'
 
 UPLOAD_ROOT = MEDIA_ROOT + "media/uploads/"
 DOWNLOAD_ROOT = os.path.join(PROJECT_ROOT, "static/media/downloads/")
 
-# This fucking thing keeps on irritating but now it wont
-
 COMPRESS_ENABLED = True
 DEBUG = True
+
+#==============================================
+
