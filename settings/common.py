@@ -8,7 +8,7 @@ from fabric.api import env, run
 WEB_ENV = os.environ['WEB_ENV']
 
 if WEB_ENV == "dev":
-    MYSQL_HOST = "172.104.177.182"
+    MYSQL_HOST = "localhost"
     MYSQL_DB_PASS = "jsERjitendra"
     print "Your env is [DEV]"
 

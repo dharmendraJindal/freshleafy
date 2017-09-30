@@ -12,8 +12,8 @@ def deploy():
         # run("pip install -r settings/requirements.pip")
 
         print "Reloading project......................"
-        run("sudo supervisorctl reread")
-        run("sudo supervisorctl update")
+        run("sudo service supervisor stop")
+        run("sudo service supervisor start")
 
         print "Done============******************************************"
 
