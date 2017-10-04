@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ProductApp">
+<html lang="en">
 <head>
-    <base href="/" />
+    <base href="/"/>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/static/temporary_logo.jpeg">
     <title>DJindal</title>
-     {% include "includes/styles.html" %}
+    {% include "includes/styles.html" %}
+
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/angular-material/angular-material.min.css" />
+
+
+    <script src="/static/bower_components/angular/angular.min.js"></script>
+    <script src="/static/bower_components/angular-route/angular-route.min.js"></script>
+
+    <script src="/static/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="/static/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/static/bower_components/angular-material/angular-material.min.js"></script>
+
+
+    <script src="/static/JSApps/app.js"></script>
+    <script src="/static/JSApps/home/HomeController.js"></script>
+    <script src="/static/JSApps/routes.js"></script>
+
+        {% include "includes/scripts/base_scripts.html" %}
+    <!--{% include "includes/scripts/JSAppScripts.html" %}-->
+
+
 </head>
-<body id="top">
-    {% include "includes/navbar.html" %}
-    <div class="container" style="margin-top: 100px">
-        <div class="row" ng-view></div>
+<body ng-app="JSApps">
+<div>
+    <div ng-view>
+
     </div>
-
-
-    {% include "includes/scripts/base_scripts.html" %}
-    {% include "includes/scripts/product_app.html" %}
-
-
+</div>
 </body>
 </html>
