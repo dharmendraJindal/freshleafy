@@ -9,196 +9,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
 
     <!-- Angular Material Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
     <script src="app.js"></script>
+    <script src="home/HomeController.js"></script>
     <link rel="stylesheet" href="css.style">
 
 </head>
 
 <body ng-app="MatApp">
 
-<div ng-controller="AppCtrl" ng-cloak>
+<div ng-controller="HomeController" ng-cloak>
 
-    <!--Sidenav***********************************************************-->
+    <div ng-include="'home/HomeSideNav.html'"></div>
 
-    <md-sidenav component-id="left" md-component-id="left" class="md-sidenav-left md-whiteframe-z2">
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <md-button ng-click="toggle()">
-                    <md-icon md-svg-src='mat-icons/menu.svg' aria-label="Menu"></md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
-
-        <md-content layout-padding flex="100">
-            <md-list class="md-3-line">
-                <div flex="30">
-                    <md-list-item><h2>Test@gmail.com</h2></md-list-item>
-                </div>
-
-                <md-divider></md-divider>
-
-                <div flex="30">
-                    <md-list-item><h2> Home</h2></md-list-item>
-                    <md-list-item><h2> View Orders</h2></md-list-item>
-                    <md-list-item><h2> Settings</h2></md-list-item>
-                </div>
-
-                <md-divider></md-divider>
-                <div flex="20">
-                    <md-list-item><h2> About Us</h2></md-list-item>
-                </div>
-                <md-divider></md-divider>
-
-                <div flex="20">
-                    <md-list-item><h2>App Link</h2></md-list-item>
-                </div>
-            </md-list>
-        </md-content>
-    </md-sidenav>
-
-    <!--Content***********************************************************-->
     <md-content>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <md-button ng-click="toggle()">
-                    <md-icon md-svg-src='mat-icons/menu.svg' aria-label="Menu"></md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
 
-        <div class="md-padding" layout-wrap>
-            <md-grid-list md-cols="4" md-row-height="1:1" md-gutter="50px">
-                <md-grid-tile style="background-color:green;">
-                    <div flex="100">
-                        <img style="width:100%; height:auto;" src="Img_1.jpg" layout="fill">
-                    </div>
-                    <md-grid-tile-footer layout-align="center center">
-                        <h1>first tile</h1>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-                <md-grid-tile style="background-color:green;">
-                    <div flex="100">
-                        <img style="width:100%; height:auto;" src="Img_2.jpg" layout="fill">
-                    </div>
-                    <md-grid-tile-footer layout-align="center center">
-                        <h1>first tile</h1>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-                <md-grid-tile style="background-color:green;">
-                    <div flex="100">
-                        <img style="width:100%; height:auto;" src="Img_1.jpg" layout="fill">
-                    </div>
-                    <md-grid-tile-footer layout-align="center center">
-                        <h1>first tile</h1>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-                <md-grid-tile style="background-color:green;">
-                    <div flex="100">
-                        <img style="width:100%; height:auto;" src="Img_2.jpg" layout="fill">
-                    </div>
-                    <md-grid-tile-footer layout-align="center center">
-                        <h1>first tile</h1>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-                <md-grid-tile style="background-color:green;">
-                    <div flex="100">
-                        <img style="width:100%; height:auto;" src="Img_1.jpg" layout="fill">
-                    </div>
-                    <md-grid-tile-footer layout-align="center center">
-                        <h1>first tile</h1>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-                <md-grid-tile style="background-color:green;">
-                    <div flex="100">
-                        <img style="width:100%; height:auto;" src="Img_2.jpg" layout="fill">
-                    </div>
-                    <md-grid-tile-footer layout-align="center center">
-                        <h1>first tile</h1>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-                <md-grid-tile style="background-color:green;">
-                    <div flex="100">
-                        <img style="width:100%; height:auto;" src="Img_1.jpg" layout="fill">
-                    </div>
-                    <md-grid-tile-footer layout-align="center center">
-                        <h1>first tile</h1>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-                <md-grid-tile style="background-color:green;">
-                    <div flex="100">
-                        <img style="width:100%; height:auto;" src="Img_2.jpg" layout="fill">
-                    </div>
-                    <md-grid-tile-footer layout-align="center center">
-                        <h1>first tile</h1>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-            </md-grid-list>
-        </div>
+        <div ng-include="'home/HomeToolBar.html'"></div>
+
+        <div ng-include="'home/HomeContent.html'"></div>
 
         <md-divider></md-divider>
 
-        <!--Footer***********************************************************-->
-        <div layout="column">
-            <div flex="50" layout="row">
-                <div flex="30" align="center">
-
-                    <p class="footer_paragraph">
-                    <h3>The Company</h3></p>
-
-                    <p class="footer_paragraph">Careers </p>
-                    <p class="footer_paragraph"> Terms and conditions </p>
-                    <p class="footer_paragraph"> Privacy policy</p>
-
-                </div>
-
-                <div flex="40" >
-
-                    <span align="center">
-                      <p class="footer_paragraph">
-                    <h3>Follow us on</h3></p>
-                        </span>
-                           <md-button>
-                        <md-icon md-svg-src='mat-icons/icons8-Facebook.svg' aria-label="Menu"></md-icon>
-                    </md-button>
-                    <md-button>
-                        <md-icon md-svg-src='mat-icons/icons8-Twitter.svg' aria-label="Menu"></md-icon>
-                    </md-button>
-
-                    <span>
-                            <p class="footer_paragraph" align="center">Get in touch </p>
-                    <md-button>
-                        <md-icon md-svg-src='mat-icons/ic_phone_black_24px.svg' aria-label="Menu"></md-icon>
-                    </md-button>
-                    9049064851<br>
-
-                    <md-button>
-                        <md-icon md-svg-src='mat-icons/ic_mail_outline_black_24px.svg' aria-label="Menu"></md-icon>
-                    </md-button>
-                    jitendrashahar@gmail.com
-
-                    </span>
-
-
-
-                </div>
-                <div flex="30"  align="center">
-
-                    <md-button>
-                        <md-icon md-svg-src='mat-icons/ic_phone_android_black_24px.svg' aria-label="Menu"></md-icon>
-                    </md-button>
-                    Download App
-
-                </div>
-            </div>
-            <div flex="20" style="background-color:#EBDBFA;"></div>
-            <div flex="30"></div>
-
-        </div>
-
-        <!--Footer***********************************************************-->
+        <div ng-include="'home/HomeFooter.html'"></div>
 
 
     </md-content>

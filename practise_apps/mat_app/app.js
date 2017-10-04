@@ -1,11 +1,4 @@
-angular
-  .module('MatApp', ['ngMaterial'])
-
-  .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-
-  $scope.toggle = function() {
-      $mdSidenav('left').toggle();
-  };
+var MatApp = angular
+  .module('MatApp', ['ngMaterial', "ngRoute"])
 
 
-  })
