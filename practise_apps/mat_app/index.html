@@ -21,6 +21,8 @@
 
 <div ng-controller="AppCtrl" ng-cloak>
 
+    <!--Sidenav***********************************************************-->
+
     <md-sidenav component-id="left" md-component-id="left" class="md-sidenav-left md-whiteframe-z2">
         <md-toolbar>
             <div class="md-toolbar-tools">
@@ -57,7 +59,7 @@
         </md-content>
     </md-sidenav>
 
-
+    <!--Content***********************************************************-->
     <md-content>
         <md-toolbar>
             <div class="md-toolbar-tools">
@@ -68,8 +70,6 @@
         </md-toolbar>
 
         <div class="md-padding" layout-wrap>
-
-
             <md-grid-list md-cols="4" md-row-height="1:1" md-gutter="50px">
                 <md-grid-tile style="background-color:green;">
                     <div flex="100">
@@ -87,7 +87,7 @@
                         <h1>first tile</h1>
                     </md-grid-tile-footer>
                 </md-grid-tile>
-                       <md-grid-tile style="background-color:green;">
+                <md-grid-tile style="background-color:green;">
                     <div flex="100">
                         <img style="width:100%; height:auto;" src="Img_1.jpg" layout="fill">
                     </div>
@@ -103,7 +103,7 @@
                         <h1>first tile</h1>
                     </md-grid-tile-footer>
                 </md-grid-tile>
-                       <md-grid-tile style="background-color:green;">
+                <md-grid-tile style="background-color:green;">
                     <div flex="100">
                         <img style="width:100%; height:auto;" src="Img_1.jpg" layout="fill">
                     </div>
@@ -119,7 +119,7 @@
                         <h1>first tile</h1>
                     </md-grid-tile-footer>
                 </md-grid-tile>
-                       <md-grid-tile style="background-color:green;">
+                <md-grid-tile style="background-color:green;">
                     <div flex="100">
                         <img style="width:100%; height:auto;" src="Img_1.jpg" layout="fill">
                     </div>
@@ -137,6 +137,68 @@
                 </md-grid-tile>
             </md-grid-list>
         </div>
+
+        <md-divider></md-divider>
+
+        <!--Footer***********************************************************-->
+        <div layout="column">
+            <div flex="50" layout="row">
+                <div flex="30" align="center">
+
+                    <p class="footer_paragraph">
+                    <h3>The Company</h3></p>
+
+                    <p class="footer_paragraph">Careers </p>
+                    <p class="footer_paragraph"> Terms and conditions </p>
+                    <p class="footer_paragraph"> Privacy policy</p>
+
+                </div>
+
+                <div flex="40" >
+
+                    <span align="center">
+                      <p class="footer_paragraph">
+                    <h3>Follow us on</h3></p>
+                        </span>
+                           <md-button>
+                        <md-icon md-svg-src='mat-icons/icons8-Facebook.svg' aria-label="Menu"></md-icon>
+                    </md-button>
+                    <md-button>
+                        <md-icon md-svg-src='mat-icons/icons8-Twitter.svg' aria-label="Menu"></md-icon>
+                    </md-button>
+
+                    <span>
+                            <p class="footer_paragraph" align="center">Get in touch </p>
+                    <md-button>
+                        <md-icon md-svg-src='mat-icons/ic_phone_black_24px.svg' aria-label="Menu"></md-icon>
+                    </md-button>
+                    9049064851<br>
+
+                    <md-button>
+                        <md-icon md-svg-src='mat-icons/ic_mail_outline_black_24px.svg' aria-label="Menu"></md-icon>
+                    </md-button>
+                    jitendrashahar@gmail.com
+
+                    </span>
+
+
+
+                </div>
+                <div flex="30"  align="center">
+
+                    <md-button>
+                        <md-icon md-svg-src='mat-icons/ic_phone_android_black_24px.svg' aria-label="Menu"></md-icon>
+                    </md-button>
+                    Download App
+
+                </div>
+            </div>
+            <div flex="20" style="background-color:#EBDBFA;"></div>
+            <div flex="30"></div>
+
+        </div>
+
+        <!--Footer***********************************************************-->
 
 
     </md-content>
