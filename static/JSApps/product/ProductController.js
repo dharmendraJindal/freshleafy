@@ -1,6 +1,5 @@
 JSApps.controller('ProductController', ["$scope", "$rootScope", "$http", function ($scope, $rootScope, $http) {
 
-    $scope.cartItemHandler = CartItemHandler($rootScope);
     getProducts();
 
 //function getProducts() {

@@ -1,11 +1,7 @@
 function CartItemHandler($rootScope) {
 
     // initialization
-    var cartItems;
-    init($rootScope.cartItems);
-    this.init = function init(cartItems) {
-        cartItems = cartItems;
-    };
+    var cartItems = $rootScope.cartItems;
 
 
     this.getCartSize = function getCartSize() {
