@@ -7,7 +7,7 @@
     <title>DJindal</title>
     {% include "includes/styles.html" %}
 
-    <link rel="stylesheet" type="text/css" href="/static/bower_components/angular-material/angular-material.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/angular-material/angular-material.min.css"/>
 
 
     <script src="/static/bower_components/angular/angular.min.js"></script>
@@ -18,20 +18,31 @@
     <script src="/static/bower_components/angular-material/angular-material.min.js"></script>
 
 
-    <script src="/static/JSApps/app.js"></script>
+    <script src="/static/JSApps/App.js"></script>
+    <script src="/static/JSApps/AppRun.js"></script>
+    <script src="/static/JSApps/base/BaseController.js"></script>
     <script src="/static/JSApps/home/HomeController.js"></script>
     <script src="/static/JSApps/product/ProductController.js"></script>
-    <script src="/static/JSApps/routes.js"></script>
+    <script src="/static/JSApps/Routes.js"></script>
 
-        {% include "includes/scripts/base_scripts.html" %}
+    {% include "includes/scripts/base_scripts.html" %}
     <!--{% include "includes/scripts/JSAppScripts.html" %}-->
 
 
 </head>
 <body ng-app="JSApps">
 <div>
-    <div ng-view>
+    <div ng-controller="BaseController">
+        <div ng-include="'/static/JSApps/base/BaseSideNav.html'"></div>
+        <div ng-include="'/static/JSApps/base/BaseToolBar.html'"></div>
+    </div>
 
+    <div ng-view>
+        <!--Other pages content comes here-->
+    </div>
+    <div ng-controller="BaseController">
+        <md-divider></md-divider>
+        <div ng-include="'/static/JSApps/base/BaseFooter.html'"></div>
     </div>
 </div>
 </body>

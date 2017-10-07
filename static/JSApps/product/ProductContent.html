@@ -10,11 +10,12 @@
                         <img ng-src="/static/JSApps/images/Maggi.jpg" alt="" style="width:100%; height:100%;">
 
                     </div>
-                    <div flex="60"  layout="column">
+                    <div flex="60" layout="column">
 
-                        <div flex="50" >
+                        <div flex="50">
 
-                            <md-select name="favoriteColor" ng-model="favoriteColor" required layout-align="center center">
+                            <md-select name="favoriteColor" ng-model="favoriteColor" required
+                                       layout-align="center center">
                                 <md-option ng-repeat="pack_size in product.quantity_intervals.pack_size_types"
                                            value="red"> {{ pack_size }}
                                 </md-option>
@@ -22,7 +23,7 @@
 
 
                         </div>
-                        <div flex="20" >
+                        <div flex="20">
 
                             {{ product.name }}
                         </div>
@@ -31,18 +32,18 @@
                             <div flex="40" class="text-center">
                                 Price:60
                             </div>
-                            <div flex="20" >
-                                    <md-icon md-svg-src="\static\JSApps\mat-icons\icons8-Minus.svg"
-                                    aria-label="Menu">
-
-                                    </md-icon>
+                            <div flex="20">
+                                <md-icon ng-click="cartItemHandler.removeProduct(product)" md-svg-src="\static\JSApps\mat-icons\icons8-Minus.svg"
+                                         aria-label="Menu">
+                                </md-icon>
                             </div>
-                            <div flex="20"  layout-align="center center">
+                            <div flex="20" layout-align="center center">
                                 5
                             </div>
-                            <div flex="20" >
-                                    <md-icon
-                                    md-svg-src="\static\JSApps\mat-icons\ic_add_circle_outline_black_18px.svg" area-label="Menu"></md-icon>
+                            <div flex="20">
+                                <md-icon ng-click="cartItemHandler.addProduct(product"
+                                        md-svg-src="\static\JSApps\mat-icons\ic_add_circle_outline_black_18px.svg"
+                                        area-label="Menu"></md-icon>
                             </div>
 
 

@@ -16,7 +16,7 @@ function CartItemHandler($rootScope) {
         return cartItems.length;
     };
 
-    this.setProduct = function setProduct(product) {
+    this.addProduct = function setProduct(product) {
         return cartItems.push(product);
     };
 
