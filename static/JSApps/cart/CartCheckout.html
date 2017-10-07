@@ -1,0 +1,59 @@
+<md-content class="md-padding">
+    <md-grid-list md-cols="4" md-row-height="2:1" md-gutter="30px">
+
+        <!--<div ng-if="products.length>0">-->
+            <md-grid-tile ng-repeat="product in products">
+            <md-card md-theme-watch style="width:100%; height:100%;">
+
+                <div layout="row" flex="100">
+                    <div flex="40" style="background-color:yellow;">
+                        <img ng-src="/static/JSApps/images/Maggi.jpg" alt="" style="width:100%; height:100%;">
+
+                    </div>
+                    <div flex="60" layout="column">
+
+                        <div flex="50">
+
+
+
+                        </div>
+                        <div flex="20">
+
+                            {{ product.name }}
+                        </div>
+                        <div flex="30" layout="row">
+
+                            <div flex="40" class="text-center">
+                                Price:30
+                            </div>
+                            <div flex="20">
+                                Qt: {{ product.totalQuantity }}
+                                <!--<md-icon ng-click="cartHandler.removeProduct(product)" md-svg-src="\static\JSApps\mat-icons\icons8-Minus.svg"-->
+                                         <!--aria-label="Menu">-->
+                                <!--</md-icon>-->
+                            <!--</div>-->
+                            <!--<div flex="20" layout-align="center center">-->
+                                <!--{{ product.totalQuantity}}-->
+                            <!--</div>-->
+                            <!--<div flex="20">-->
+                                <!--<md-icon ng-click="addProduct(product, 30)"-->
+                                        <!--md-svg-src="\static\JSApps\mat-icons\ic_add_circle_outline_black_18px.svg"-->
+                                        <!--area-label="Menu"></md-icon>-->
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </md-card>
+        </md-grid-tile>
+        <!--</div>-->
+
+        <!--<div ng-if="products.length==0">-->
+            <!--Your cart is empty-->
+        <!--</div>-->
+
+    </md-grid-list>
+</md-content>

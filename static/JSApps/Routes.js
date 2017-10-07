@@ -9,6 +9,11 @@ JSApps.config(["$routeProvider",
                     templateUrl: '/static/JSApps/product/ProductContent.html',
                     controller: 'ProductController'
                 })
+
+              .when('/cartcheckout', {
+                    templateUrl: '/static/JSApps/cart/CartCheckout.html',
+                    controller: 'CartCheckoutController'
+                })
             .otherwise({
                 redirectTo: '/'
             });
