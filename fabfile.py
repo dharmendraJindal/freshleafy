@@ -6,7 +6,7 @@ env.hosts = ["172.104.177.182"]
 
 def deploy():
     print "DEPLOYING ============******************************************"
-    with cd('public/jindalfresh/freshleafy'):
+    with cd('public/projects/jindalservices'):
         with_virtualenv()
         run("git pull")
         # run("pip install -r settings/requirements.pip")
@@ -19,7 +19,7 @@ def deploy():
 
 def migrate():
     print "Running migrations============******************************************"
-    with cd('public/jindalfresh/freshleafy'):
+    with cd('public/projects/jindalservices'):
         with_virtualenv()
         run("python manage.py migrate")
     print "Done============******************************************"
