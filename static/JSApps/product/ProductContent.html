@@ -30,18 +30,18 @@
                         <div flex="30" layout="row">
 
                             <div flex="40" class="text-center">
-                                Price:60
+                                Price:30
                             </div>
                             <div flex="20">
-                                <md-icon ng-click="cartItemHandler.removeProduct(product)" md-svg-src="\static\JSApps\mat-icons\icons8-Minus.svg"
+                                <md-icon ng-click="cartHandler.removeProduct(product)" md-svg-src="\static\JSApps\mat-icons\icons8-Minus.svg"
                                          aria-label="Menu">
                                 </md-icon>
                             </div>
                             <div flex="20" layout-align="center center">
-                                5
+                                {{ product.totalQuantity}}
                             </div>
                             <div flex="20">
-                                <md-icon ng-click="cartItemHandler.addProduct(product"
+                                <md-icon ng-click="addProduct(product, 30)"
                                         md-svg-src="\static\JSApps\mat-icons\ic_add_circle_outline_black_18px.svg"
                                         area-label="Menu"></md-icon>
                             </div>

@@ -2,6 +2,12 @@ JSApps.controller('ProductController', ["$scope", "$rootScope", "$http", functio
 
     getProducts();
 
+    $scope.addProduct = function addProduct(product, rateOfSelectedPackSize) {
+        console.log(product);
+        product.totalQuantity += 1;
+        $rootScope.cartHandler.addProduct(product, rateOfSelectedPackSize, product.totalQuantity)
+    };
+
 //function getProducts() {
 //    $http.get("http://lit-dusk-68336.herokuapp.com/api/v1/product/products/")
 //    .then(
@@ -18,8 +24,6 @@ JSApps.controller('ProductController', ["$scope", "$rootScope", "$http", functio
 //}
 
     function getProducts() {
-
-
         $scope.products = [
             {
                 "name": "Kakdi",
@@ -34,6 +38,8 @@ JSApps.controller('ProductController', ["$scope", "$rootScope", "$http", functio
                 "rate": "30",
                 "unit": "Kg",
                 "product_id": 1,
+                "totalQuantity": 0,
+                "rateOfSelectedPackSize": 30,
                 "quantity_intervals": {
                     "pack_size_rates": [
                         30,
@@ -64,6 +70,8 @@ JSApps.controller('ProductController', ["$scope", "$rootScope", "$http", functio
                 "rate": "80",
                 "unit": "Kg",
                 "product_id": 2,
+                "totalQuantity": 0,
+                "rateOfSelectedPackSize": 30,
                 "quantity_intervals": {
                     "pack_size_rates": [
                         30,
@@ -97,6 +105,8 @@ JSApps.controller('ProductController', ["$scope", "$rootScope", "$http", functio
                 "rate": "150",
                 "unit": "Kg",
                 "product_id": 3,
+                "totalQuantity": 0,
+                "rateOfSelectedPackSize": 30,
                 "quantity_intervals": {
                     "pack_size_rates": [
                         30,
@@ -127,6 +137,8 @@ JSApps.controller('ProductController', ["$scope", "$rootScope", "$http", functio
                 "rate": "50",
                 "unit": "Kg",
                 "product_id": 4,
+                "totalQuantity": 0,
+                "rateOfSelectedPackSize": 30,
                 "quantity_intervals": {
                     "pack_size_rates": [
                         30,
@@ -157,6 +169,8 @@ JSApps.controller('ProductController', ["$scope", "$rootScope", "$http", functio
                 "rate": "250",
                 "unit": "Kg",
                 "product_id": 5,
+                "totalQuantity": 0,
+                "rateOfSelectedPackSize": 30,
                 "quantity_intervals": {
                     "pack_size_rates": [
                         30,
